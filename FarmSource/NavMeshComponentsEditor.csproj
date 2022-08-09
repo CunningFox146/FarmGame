@@ -9,10 +9,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{9567C499-27D3-34B5-E864-3ADFEB34A3BD}</ProjectGuid>
+    <ProjectGuid>{C34939C1-8ECC-7F24-721C-FCCD78CEA310}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Zenject-Editor</AssemblyName>
+    <AssemblyName>NavMeshComponentsEditor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -56,23 +56,15 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\SceneParentLoading\SceneParentAutomaticLoader.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\ZenUnityEditorUtil.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\Editors\GameObjectContextEditor.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\Editors\RunnableContextEditor.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\ZenMenuItems.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\Editors\ProjectContextEditor.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\SceneParentLoading\DefaultSceneContractConfig.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\Editors\SceneDecoratorContextEditor.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\ObjectGraphVisualizer.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\EditorStaticInstaller.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\UnityInspectorListEditor.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\EditorWindow\ZenjectEditorWindow.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\Editors\SceneContextEditor.cs" />
-    <Compile Include="Assets\Plugins\Zenject\Source\Editor\Editors\ContextEditor.cs" />
+    <Compile Include="Assets\Plugins\NavMeshComponents\Editor\NavMeshComponentsGUIUtility.cs" />
+    <Compile Include="Assets\Plugins\NavMeshComponents\Editor\NavMeshLinkEditor.cs" />
+    <Compile Include="Assets\Plugins\NavMeshComponents\Editor\NavMeshModifierVolumeEditor.cs" />
+    <Compile Include="Assets\Plugins\NavMeshComponents\Editor\NavMeshModifierEditor.cs" />
+    <Compile Include="Assets\Plugins\NavMeshComponents\Editor\NavMeshAssetManager.cs" />
+    <Compile Include="Assets\Plugins\NavMeshComponents\Editor\NavMeshSurfaceEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Plugins\Zenject\Source\Editor\Zenject-Editor.asmdef" />
+    <None Include="Assets\Plugins\NavMeshComponents\Editor\NavMeshComponentsEditor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -782,9 +774,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Zenject.csproj">
-      <Project>{59A8BE5C-1BD9-8DC5-74B7-47E9F04FE18F}</Project>
-      <Name>Zenject</Name>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{B60CD26D-1AC0-6D63-CC86-D32A511F8DD0}</Project>
+      <Name>NavMeshComponents</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
