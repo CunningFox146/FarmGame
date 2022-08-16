@@ -56,8 +56,8 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\NavMeshComponents\Scripts\NavMeshLink.cs" />
     <Compile Include="Assets\Plugins\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
+    <Compile Include="Assets\Plugins\NavMeshComponents\Scripts\NavMeshLink.cs" />
     <Compile Include="Assets\Plugins\NavMeshComponents\Scripts\NavMeshSurface.cs" />
     <Compile Include="Assets\Plugins\NavMeshComponents\Scripts\NavMeshModifier.cs" />
   </ItemGroup>

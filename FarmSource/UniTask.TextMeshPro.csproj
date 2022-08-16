@@ -56,8 +56,8 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.cysharp.unitask@9b95f3b9f6\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.InputField.cs" />
     <Compile Include="Library\PackageCache\com.cysharp.unitask@9b95f3b9f6\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.cysharp.unitask@9b95f3b9f6\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.InputField.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\PackageCache\com.cysharp.unitask@9b95f3b9f6\Runtime\External\TextMeshPro\UniTask.TextMeshPro.asmdef" />
