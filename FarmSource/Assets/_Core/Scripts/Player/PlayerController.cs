@@ -8,8 +8,16 @@ namespace Farm.Player
     [RequireComponent(typeof(InteractionsSystem))]
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] private float _raycastDistance;
         private PlayerInputActions _inputActions;
         private InteractionsSystem _interactionsSystem;
+        private Camera _camera;
+
+        [Zenject.Inject]
+        private void Constructor(Camera camera)
+        {
+            _camera = camera;
+        }
 
         private void Awake()
         {
@@ -32,8 +40,8 @@ namespace Farm.Player
         private void OnInteractHandler(InputAction.CallbackContext context)
         {
             var pos = _inputActions.Player.Position.ReadValue<Vector2>();
-            var ray = Camera.main.ScreenPointToRay(pos);
-            if (Physics.Raycast(ray, out RaycastHit hit, 50f))
+            var ray = _camera.ScreenPointToRay(pos);
+            if (Physics.Raycast(ray, out RaycastHit hit, _raycastDistance))
             {
                 var info = new InteractionInfo()
                 {

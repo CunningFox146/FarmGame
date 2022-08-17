@@ -24,7 +24,7 @@ namespace Farm.Systems
         {
             Stop();
             _destination = destination;
-            _targetDistance = distance <= 0f ? 0.1f : distance;
+            _targetDistance = distance;
             _shouldMove = true;
         }
 

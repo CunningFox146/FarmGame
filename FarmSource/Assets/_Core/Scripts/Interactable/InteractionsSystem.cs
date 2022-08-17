@@ -34,6 +34,7 @@ namespace Farm.Interactable
             {
                 _targetCt?.Cancel();
                 _targetCt = new();
+
                 StartInteraction(info, interaction, _targetCt.Token);
             }
         }
