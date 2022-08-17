@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Farm.States
 {
-    public class StateManager : MonoBehaviour
+    public class StateSystem : MonoBehaviour
     {
         public event Action<State> StateExit;
         public event Action<State> StateEnter;
