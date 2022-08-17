@@ -5,12 +5,12 @@ namespace Farm.Interactable
 {
     public class InteractionsSystem : MonoBehaviour
     {
-        public void Interact(GameObject target)
+        public void Interact(GameObject target, InteractionInfo info)
         {
             var interaction = CollectInteractions(target)[0];
             if (interaction is not null)
             {
-                interaction.Interact(gameObject);
+                interaction.Interact(gameObject, info);
             }
         }
 

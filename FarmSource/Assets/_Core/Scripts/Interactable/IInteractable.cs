@@ -6,6 +6,6 @@ namespace Farm.Interactable
     {
         public int Priority { get; protected set; }
         public bool IsValid(GameObject doer);
-        public bool Interact(GameObject doer);
+        public bool Interact(GameObject doer, InteractionInfo info);
     }
 }
