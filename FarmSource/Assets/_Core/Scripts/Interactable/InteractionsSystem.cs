@@ -7,7 +7,10 @@ namespace Farm.Interactable
     {
         public void Interact(GameObject target, InteractionInfo info)
         {
-            var interaction = CollectInteractions(target)[0];
+            var interactions = CollectInteractions(target);
+            if (interactions.Count == 0) return;
+
+            var interaction = interactions[0];
             if (interaction is not null)
             {
                 interaction.Interact(gameObject, info);

@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 197578787}
   - component: {fileID: 197578786}
   - component: {fileID: 197578790}
+  - component: {fileID: 197578791}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -252,6 +253,18 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 5e1dbedae0f77f64db2139876fe68b75, type: 2}
+--- !u!114 &197578791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197578785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3d497406d941f243b4889a6e73cbb41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,6 +562,7 @@ GameObject:
   - component: {fileID: 681650313}
   - component: {fileID: 681650310}
   - component: {fileID: 681650312}
+  - component: {fileID: 681650314}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -666,7 +680,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 681650305}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2ff9d082b7ea564399b672c1df4a74d, type: 3}
+  m_Script: {fileID: 11500000, guid: 64147f0e57c4960439b638f872da57ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!54 &681650313
@@ -685,6 +699,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &681650314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681650305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e68d9400606e14087a3ea7ec778a34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832168566
 GameObject:
   m_ObjectHideFlags: 3
@@ -884,7 +910,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7784464, y: 1}
+    m_SensorSize: {x: 1.7793062, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
