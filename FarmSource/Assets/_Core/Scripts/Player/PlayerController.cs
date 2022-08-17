@@ -1,7 +1,6 @@
 ﻿using Farm.InputActions;
 using Farm.Interactable;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 namespace Farm.Player
