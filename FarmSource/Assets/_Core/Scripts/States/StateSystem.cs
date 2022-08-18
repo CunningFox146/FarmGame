@@ -12,7 +12,7 @@ namespace Farm.States
 
         public State CurrentState { get => _currentState; private set => _currentState = value; }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (CurrentState is not null)
             {
@@ -22,11 +22,16 @@ namespace Farm.States
 
         public void GoToState(State state)
         {
+            if (CurrentState?.GetType() == state?.GetType()) return;
+
             CurrentState?.OnExit();
             StateExit?.Invoke(CurrentState);
 
             CurrentState = state;
-            CurrentState?.OnEnter();
+            if (CurrentState.OnEnter is not null)
+            {
+                CurrentState?.OnEnter();
+            }
             StateEnter?.Invoke(CurrentState);
         }
 
@@ -34,7 +39,10 @@ namespace Farm.States
         {
             UpdateTimeline();
             UpdateTimeout();
-            CurrentState.OnUpdate();
+            if (CurrentState.OnUpdate is not null)
+            {
+                CurrentState.OnUpdate();
+            }
         }
 
         private void UpdateTimeline()
@@ -61,7 +69,10 @@ namespace Farm.States
             if (CurrentState.Timeout <= 0f)
             {
                 CurrentState.Timeout = -1f;
-                CurrentState.OnTimeout();
+                if (CurrentState.OnTimeout is not null)
+                {
+                    CurrentState.OnTimeout();
+                }
             }
         }
     }
