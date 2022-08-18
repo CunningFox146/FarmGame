@@ -39,15 +39,11 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: e926c7f2dcb39d740aa3af71c421ba88, type: 3}
-  - {fileID: 21300000, guid: 7a461ba9a9cd5724795e578074c3e9a7, type: 3}
-  - {fileID: 21300000, guid: 05bc098ca864b934b933b83a174484bd, type: 3}
-  - {fileID: 21300000, guid: 93eb9cbf28159ce42b463e95411faab7, type: 3}
+  - {fileID: 21300000, guid: e424d13169d1e784c993d555f721e115, type: 3}
+  - {fileID: 21300000, guid: 94e86fb1ffb95e54db0dcc62b819d6cb, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Bush0
-  - Bush1
-  - Berries
-  - Bush2
+  - BushBerriesFull
+  - BushBerriesEmpty
   m_RenderDataMap: {}
   m_Tag: Bush
   m_IsVariant: 0
