@@ -126,7 +126,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WindIntensity: 0
+    - _WindIntensity: 1
     - _WindSpeed: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
