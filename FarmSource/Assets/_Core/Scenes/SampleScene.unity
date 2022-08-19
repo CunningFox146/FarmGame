@@ -1192,7 +1192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35effb9c92bff6a48ac92964872ed0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Faces>k__BackingField: 0
+  <Faces>k__BackingField: 1
 --- !u!1 &2120928390
 GameObject:
   m_ObjectHideFlags: 0
