@@ -1,17 +1,17 @@
-﻿using UnityEngine;
+﻿using Farm.Animations;
 
 namespace Farm.States.Player
 {
-    public sealed class WalkState : State
+    public sealed class WalkState : PlayerState
     {
-        public WalkState()
+        public WalkState(AnimationSystem animator) : base(animator)
         {
             OnEnter = OnEnterState;
         }
 
         private void OnEnterState()
         {
-            Debug.Log("Entered Walk");
+            Animation.Play(PlayerAnimations.Run);
         }
     }
 }

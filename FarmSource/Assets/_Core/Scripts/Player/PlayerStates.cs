@@ -1,6 +1,6 @@
-﻿using Farm.States;
+﻿using Farm.Animations;
+using Farm.States;
 using Farm.Systems;
-using System;
 using UnityEngine;
 
 namespace Farm.Player
@@ -9,15 +9,17 @@ namespace Farm.Player
     public sealed class PlayerStates : StateSystem
     {
         private Movement _movement;
+        private AnimationSystem _animation;
 
         private void Awake()
         {
             _movement = GetComponent<Movement>();
+            _animation = GetComponentInChildren<AnimationSystem>();
         }
 
         private void Start()
         {
-            GoToState(new States.Player.IdleState());
+            GoToState(new States.Player.IdleState(_animation));
         }
 
         private void OnEnable()
@@ -44,12 +46,12 @@ namespace Farm.Player
 
         private void OnMovementStartHandler()
         {
-            GoToState(new States.Player.WalkState());
+            GoToState(new States.Player.WalkState(_animation));
         }
 
         private void OnMovementStopHandler()
         {
-            GoToState(new States.Player.IdleState());
+            GoToState(new States.Player.IdleState(_animation));
         }
     }
 }
