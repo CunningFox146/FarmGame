@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using UnityEngine;
 
 namespace Farm.Systems
@@ -7,11 +6,10 @@ namespace Farm.Systems
     [RequireComponent(typeof(Rigidbody))]
     public class Movement : MonoBehaviour
     {
-        public event Action MovementStart; 
-        public event Action MovementStop; 
+        public event Action MovementStart;
+        public event Action MovementStop;
 
         private Rigidbody _rigidbody;
-        private CancellationTokenSource _velocityCt;
         private Vector3 _destination;
         private float _targetDistance;
         private bool _shouldMove;
@@ -30,6 +28,7 @@ namespace Farm.Systems
             _destination = destination;
             _targetDistance = distance;
             _shouldMove = true;
+            IsMoving = true;
             MovementStart?.Invoke();
         }
 

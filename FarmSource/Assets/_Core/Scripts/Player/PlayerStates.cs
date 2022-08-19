@@ -32,6 +32,16 @@ namespace Farm.Player
             UnregisterEventListeners();
         }
 
+        public void StartWorking()
+        {
+            GoToState(new States.Player.WorkState(_animation));
+        }
+
+        public void StartIdle()
+        {
+            GoToState(new States.Player.IdleState(_animation));
+        }
+
         private void RegisterEventListeners()
         {
             _movement.MovementStart += OnMovementStartHandler;

@@ -24,7 +24,7 @@ namespace Farm.States
         {
             if (CurrentState?.GetType() == state?.GetType()) return;
 
-            CurrentState?.OnExit();
+            CurrentState?.Exit();
             StateExit?.Invoke(CurrentState);
 
             CurrentState = state;
@@ -64,15 +64,13 @@ namespace Farm.States
 
         private void UpdateTimeout()
         {
-            if (CurrentState.Timeout <= -1f) return;
-            CurrentState.Timeout -= Time.deltaTime;
-            if (CurrentState.Timeout <= 0f)
+            if (CurrentState.TimeoutTime <= -1f) return;
+            CurrentState.TimeoutTime -= Time.deltaTime;
+
+            if (CurrentState.TimeoutTime <= 0f)
             {
-                CurrentState.Timeout = -1f;
-                if (CurrentState.OnTimeout is not null)
-                {
-                    CurrentState.OnTimeout();
-                }
+                CurrentState.TimeoutTime = -1f;
+                CurrentState.Timeout();
             }
         }
     }
