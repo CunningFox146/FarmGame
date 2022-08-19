@@ -23,7 +23,6 @@ namespace Farm.States
             }
         }
 
-        
         public virtual void OnExit()
         {
             IsDone = true;

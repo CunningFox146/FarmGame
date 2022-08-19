@@ -1,17 +1,17 @@
-﻿using UnityEngine;
+﻿using Farm.Animations;
 
 namespace Farm.States.Player
 {
-    public sealed class IdleState : State
+    public sealed class IdleState : PlayerState
     {
-        public IdleState()
+        public IdleState(AnimationSystem animator) : base(animator)
         {
             OnEnter = OnEnterState;
         }
 
         private void OnEnterState()
         {
-            Debug.Log("Entered idle");
+            Animation.Play(PlayerAnimations.Idle);
         }
     }
 }
