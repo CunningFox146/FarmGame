@@ -46,14 +46,16 @@ namespace Farm.Interactable
             _movement.SetDestination(info.Point, interaction.Distance);
 
             var ct = this.GetCancellationTokenOnDestroy();
-
             while (_movement.IsMoving)
             {
                 if (cancellationToken.IsCancellationRequested || ct.IsCancellationRequested) break;
                 await UniTask.Yield();
             }
 
-            _target.Interact(gameObject, info);
+            if (!cancellationToken.IsCancellationRequested)
+            {
+                _target.Interact(gameObject, info);
+            }
         }
 
         private List<IInteractable> CollectInteractions(GameObject target)

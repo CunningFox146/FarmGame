@@ -45,7 +45,7 @@ namespace Farm.Player
             {
                 var info = new InteractionInfo()
                 {
-                    Point = hit.point
+                    Point = new Vector3(hit.point.x, 0f, hit.point.z),
                 };
                 _interactionsSystem.Interact(hit.transform.gameObject, info);
             }
