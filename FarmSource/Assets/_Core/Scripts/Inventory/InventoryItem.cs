@@ -1,0 +1,45 @@
+﻿using Farm.Interactable;
+using System;
+using UnityEngine;
+
+namespace Farm.Inventory
+{
+    public class InventoryItem : MonoBehaviour, IInteractable
+    {
+        [field: SerializeField] public bool IsInteractable { get; protected set; } = true;
+
+        [field: SerializeField] int IInteractable.Priority { get; set; } = 1;
+        [field: SerializeField] float IInteractable.Distance { get; set; } = 2f;
+
+        public event Action<Inventory> PutInInventory;
+        public event Action<Inventory> Dropped;
+
+        public void OnPutInInventory(Inventory inventory)
+        {
+            PutInInventory?.Invoke(inventory);
+            gameObject.SetActive(false);
+            transform.SetParent(inventory.transform);
+        }
+
+        public void OnDropped(Inventory inventory)
+        {
+            Dropped?.Invoke(inventory);
+            gameObject.SetActive(true);
+            transform.SetParent(null);
+
+            // TODO: Do drop physics?
+        }
+
+        public bool IsValid(GameObject doer)
+        {
+            return doer.GetComponent<Inventory>() is not null && IsInteractable;
+        }
+
+        public bool Interact(GameObject doer, InteractionInfo info)
+        {
+            var inventory = doer.GetComponent<Inventory>();
+            inventory.Put(this);
+            return true;
+        }
+    }
+}
