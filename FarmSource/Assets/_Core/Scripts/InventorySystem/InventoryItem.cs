@@ -8,8 +8,8 @@ namespace Farm.InventorySystem
     {
         [field: SerializeField] public bool IsInteractable { get; protected set; } = true;
 
-        [field: SerializeField] int IInteractable.Priority { get; set; } = 1;
-        [field: SerializeField] float IInteractable.Distance { get; set; } = 2f;
+        int IInteractable.Priority { get; set; } = 1;
+        float IInteractable.Distance { get; set; } = 2f;
 
         public event Action<Inventory> PutInInventory;
         public event Action<Inventory> Dropped;
