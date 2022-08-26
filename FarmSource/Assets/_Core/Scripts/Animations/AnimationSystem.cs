@@ -1,3 +1,4 @@
+using Farm.Animations.FaceAppliers;
 using UnityEngine;
 
 namespace Farm.Animations
