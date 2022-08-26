@@ -2,6 +2,7 @@
 using Farm.Systems;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Farm.Interactable
@@ -24,7 +25,7 @@ namespace Farm.Interactable
             _targetCt = null;
         }
 
-        public void Interact(GameObject target, InteractionInfo info)
+        public void Interact(Transform target, InteractionInfo info)
         {
             var interactions = CollectInteractions(target);
             if (interactions.Count == 0) return;
@@ -58,11 +59,11 @@ namespace Farm.Interactable
             }
         }
 
-        private List<IInteractable> CollectInteractions(GameObject target)
+        private List<IInteractable> CollectInteractions(Transform target)
         {
             var interactions = new List<IInteractable>();
 
-            foreach (IInteractable interactable in target.GetComponents<IInteractable>())
+            foreach (IInteractable interactable in GetInteractables(target))
             {
                 if (!interactable.IsValid(gameObject)) continue;
                 interactions.Add(interactable);
@@ -71,6 +72,12 @@ namespace Farm.Interactable
             interactions.Sort((a, b) => a.Priority.CompareTo(b.Priority));
 
             return interactions;
+        }
+
+        // We asume that collider is always the child of the target
+        private IEnumerable<IInteractable> GetInteractables(Transform target)
+        {
+            return target.parent.GetComponents<IInteractable>();
         }
     }
 }

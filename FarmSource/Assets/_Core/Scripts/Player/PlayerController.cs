@@ -1,5 +1,6 @@
 ﻿using Farm.InputActions;
 using Farm.Interactable;
+using Farm.Util;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -41,13 +42,13 @@ namespace Farm.Player
         {
             var pos = _inputActions.Player.Position.ReadValue<Vector2>();
             var ray = _camera.ScreenPointToRay(pos);
-            if (Physics.Raycast(ray, out RaycastHit hit, _raycastDistance))
+            if (Physics.Raycast(ray, out RaycastHit hit, _raycastDistance, 1 << (int)Layers.Interactable))
             {
                 var info = new InteractionInfo()
                 {
                     Point = new Vector3(hit.point.x, 0f, hit.point.z),
                 };
-                _interactionsSystem.Interact(hit.transform.gameObject, info);
+                _interactionsSystem.Interact(hit.transform, info);
             }
         }
 

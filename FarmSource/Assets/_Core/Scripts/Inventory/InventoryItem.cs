@@ -19,6 +19,7 @@ namespace Farm.Inventory
             PutInInventory?.Invoke(inventory);
             gameObject.SetActive(false);
             transform.SetParent(inventory.transform);
+            transform.localPosition = Vector3.zero;
         }
 
         public void OnDropped(Inventory inventory)
