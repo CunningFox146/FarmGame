@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-namespace Farm.Inventory
+namespace Farm.InventorySystem
 {
     public class Inventory : MonoBehaviour
     {

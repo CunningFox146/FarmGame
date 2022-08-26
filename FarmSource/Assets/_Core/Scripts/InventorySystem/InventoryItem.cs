@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace Farm.Inventory
+namespace Farm.InventorySystem
 {
     public class InventoryItem : MonoBehaviour, IInteractable
     {
