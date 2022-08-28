@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Farm.UI;
+using UnityEngine;
 using Zenject;
 
 namespace Farm.Infrastructure
@@ -10,14 +11,21 @@ namespace Farm.Infrastructure
         public override void InstallBindings()
         {
             BindMainCamera();
+            BindViewSystem();
+        }
 
+        private void BindViewSystem()
+        {
+            Container.Bind<ViewSystem>()
+                .FromComponentInHierarchy()
+                .AsSingle();
         }
 
         private void BindMainCamera()
         {
             Container.Bind<Camera>()
-                            .FromInstance(_mainCamera)
-                            .AsSingle();
+                .FromInstance(_mainCamera)
+                .AsSingle();
         }
     }
 }

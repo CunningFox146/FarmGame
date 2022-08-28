@@ -1,5 +1,7 @@
 ﻿using Farm.InputActions;
 using Farm.Interactable;
+using Farm.UI;
+using Farm.UI.HUD;
 using Farm.Util;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,12 +14,17 @@ namespace Farm.Player
         [SerializeField] private float _raycastDistance;
         private PlayerInputActions _inputActions;
         private InteractionsSystem _interactionsSystem;
-        private Camera _camera;
+        private Camera _mainCamera;
+        private ViewSystem _viewSystem;
+        private HUDView _hud;
+
+        public bool IsHUDFocused => _hud.IsFocused;
 
         [Zenject.Inject]
-        private void Constructor(Camera camera)
+        private void Constructor(Camera camera, ViewSystem viewSystem)
         {
-            _camera = camera;
+            _mainCamera = camera;
+            _viewSystem = viewSystem;
         }
 
         private void Awake()
@@ -26,6 +33,11 @@ namespace Farm.Player
 
             _inputActions = new PlayerInputActions();
             _inputActions.Player.Interact.performed += OnInteractHandler;
+        }
+
+        private void Start()
+        {
+            _hud = _viewSystem.GetView<HUDView>();
         }
 
         private void OnEnable()
@@ -41,7 +53,10 @@ namespace Farm.Player
         private void OnInteractHandler(InputAction.CallbackContext context)
         {
             var pos = _inputActions.Player.Position.ReadValue<Vector2>();
-            var ray = _camera.ScreenPointToRay(pos);
+
+            if (!IsHUDFocused) return;
+
+            var ray = _mainCamera.ScreenPointToRay(pos);
             if (Physics.Raycast(ray, out RaycastHit hit, _raycastDistance, 1 << (int)Layers.Interactable))
             {
                 var info = new InteractionInfo()
