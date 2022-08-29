@@ -25,13 +25,15 @@ namespace Farm.UI
             RegisterViews();
         }
 
-        public bool IsPointerOnUI(Vector3 pos)
+        public bool IsPointerOnUI(Vector3 pos) => GetElementsAtPoint(pos).Count > 0;
+
+        public List<RaycastResult> GetElementsAtPoint(Vector3 pos)
         {
             var eventData = new PointerEventData(null);
             eventData.position = pos;
             var results = new List<RaycastResult>();
             _raycaster.Raycast(eventData, results);
-            return results.Count > 0;
+            return results;
         }
 
         public T GetView<T>() where T : View

@@ -1,9 +1,13 @@
-﻿using UnityEngine.UI;
+﻿using System;
+using UnityEngine.UI;
 
 namespace Farm.UI
 {
-    public class FarmButton : Button
+    public class BasicButton : Button, IHoldHandler
     {
+        public event Action OnClick;
+        public event Action OnHold;
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -20,8 +24,12 @@ namespace Farm.UI
 
         protected virtual void OnClickHandler()
         {
-            // TODO: Play sound and do some fancy stuff
+            OnClick?.Invoke();
         }
 
+        public void OnHoldHandler()
+        {
+            OnHold?.Invoke();
+        }
     }
 }

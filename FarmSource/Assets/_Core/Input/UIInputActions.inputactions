@@ -1,0 +1,54 @@
+{
+    "name": "UIInputActions",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "7b1e13cd-8c31-4851-b04e-5c47bb7397f1",
+            "actions": [
+                {
+                    "name": "ButtonHold",
+                    "type": "Button",
+                    "id": "f75be003-4ddb-423b-bb35-a0f11144bc55",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Position",
+                    "type": "Value",
+                    "id": "6c266b21-76b5-4cbb-b16a-81ea4a9df6bf",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "314e09c5-ab7d-4266-b41a-352694c6bb72",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8b31a727-47ec-4e97-8efa-022f2d98dc8a",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
