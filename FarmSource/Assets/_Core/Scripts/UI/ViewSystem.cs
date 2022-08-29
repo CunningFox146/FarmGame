@@ -2,23 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Farm.UI
 {
-    [RequireComponent(typeof(Canvas))]
+    [RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
     public class ViewSystem : MonoBehaviour
     {
         public event Action<View> OnViewShown;
 
         private Canvas ViewsCanvas;
+        private GraphicRaycaster _raycaster;
         public List<View> Views { get; private set; }
 
         public Camera UICamera => ViewsCanvas.worldCamera;
 
         private void Awake()
         {
+            _raycaster = GetComponent<GraphicRaycaster>();
             ViewsCanvas = GetComponent<Canvas>();
             RegisterViews();
+        }
+
+        public bool IsPointerOnUI(Vector3 pos)
+        {
+            var eventData = new PointerEventData(null);
+            eventData.position = pos;
+            var results = new List<RaycastResult>();
+            _raycaster.Raycast(eventData, results);
+            return results.Count > 0;
         }
 
         public T GetView<T>() where T : View
