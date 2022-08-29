@@ -1,4 +1,4 @@
-﻿namespace Farm.UI
+﻿namespace Farm.UI.Elements
 {
     public interface IHoldHandler
     {

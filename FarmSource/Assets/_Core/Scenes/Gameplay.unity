@@ -1316,7 +1316,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7780821, y: 1}
+    m_SensorSize: {x: 1.7798611, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1854,6 +1854,7 @@ GameObject:
   - component: {fileID: 2120928393}
   - component: {fileID: 2120928392}
   - component: {fileID: 2120928391}
+  - component: {fileID: 2120928394}
   m_Layer: 0
   m_Name: GameplayContext
   m_TagString: Untagged
@@ -1889,6 +1890,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 2120928391}
+  - {fileID: 2120928394}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -1921,6 +1923,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2120928394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120928390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e615d4bc4401e34db6a6a3b0ebe0469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7184859140670716307
 PrefabInstance:
   m_ObjectHideFlags: 0

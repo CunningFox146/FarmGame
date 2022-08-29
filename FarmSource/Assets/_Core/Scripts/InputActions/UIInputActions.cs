@@ -46,6 +46,15 @@ namespace Farm.InputActions
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""DoubleTap"",
+                    ""type"": ""Button"",
+                    ""id"": ""a6452166-60d6-48c7-bbeb-41d583f9c637"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""MultiTap"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -70,6 +79,17 @@ namespace Farm.InputActions
                     ""action"": ""Position"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b9822e15-7bf1-4751-a362-a2844f527185"",
+                    ""path"": ""<Pointer>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DoubleTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -80,6 +100,7 @@ namespace Farm.InputActions
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_ButtonHold = m_UI.FindAction("ButtonHold", throwIfNotFound: true);
             m_UI_Position = m_UI.FindAction("Position", throwIfNotFound: true);
+            m_UI_DoubleTap = m_UI.FindAction("DoubleTap", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -141,12 +162,14 @@ namespace Farm.InputActions
         private IUIActions m_UIActionsCallbackInterface;
         private readonly InputAction m_UI_ButtonHold;
         private readonly InputAction m_UI_Position;
+        private readonly InputAction m_UI_DoubleTap;
         public struct UIActions
         {
             private @UIInputActions m_Wrapper;
             public UIActions(@UIInputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @ButtonHold => m_Wrapper.m_UI_ButtonHold;
             public InputAction @Position => m_Wrapper.m_UI_Position;
+            public InputAction @DoubleTap => m_Wrapper.m_UI_DoubleTap;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -162,6 +185,9 @@ namespace Farm.InputActions
                     @Position.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPosition;
                     @Position.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPosition;
                     @Position.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPosition;
+                    @DoubleTap.started -= m_Wrapper.m_UIActionsCallbackInterface.OnDoubleTap;
+                    @DoubleTap.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnDoubleTap;
+                    @DoubleTap.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnDoubleTap;
                 }
                 m_Wrapper.m_UIActionsCallbackInterface = instance;
                 if (instance != null)
@@ -172,6 +198,9 @@ namespace Farm.InputActions
                     @Position.started += instance.OnPosition;
                     @Position.performed += instance.OnPosition;
                     @Position.canceled += instance.OnPosition;
+                    @DoubleTap.started += instance.OnDoubleTap;
+                    @DoubleTap.performed += instance.OnDoubleTap;
+                    @DoubleTap.canceled += instance.OnDoubleTap;
                 }
             }
         }
@@ -180,6 +209,7 @@ namespace Farm.InputActions
         {
             void OnButtonHold(InputAction.CallbackContext context);
             void OnPosition(InputAction.CallbackContext context);
+            void OnDoubleTap(InputAction.CallbackContext context);
         }
     }
 }

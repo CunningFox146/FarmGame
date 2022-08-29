@@ -80,6 +80,5 @@ namespace Farm.UI
             var views = GetComponentsInChildren<View>();
             Views = new(views);
         }
-
     }
 }
