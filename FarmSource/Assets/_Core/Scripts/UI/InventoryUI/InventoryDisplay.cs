@@ -1,5 +1,4 @@
-﻿using Farm.InputActions;
-using Farm.InventorySystem;
+﻿using Farm.InventorySystem;
 using UnityEngine;
 
 namespace Farm.UI.InventoryUI
@@ -65,6 +64,11 @@ namespace Farm.UI.InventoryUI
             _slots[slot].SetItem(null);
         }
 
+        private void OnSlotHoldHandler(int idx)
+        {
+            _inventory.Drop(idx);
+        }
+
         private void RebuildSlots()
         {
             ClearSlots();
@@ -72,11 +76,23 @@ namespace Farm.UI.InventoryUI
             _slots = new InventorySlot[_slotsCount];
             for (int i = 0; i < _slotsCount; i++)
             {
-                _slots[i] = Instantiate(_slotPrefab, transform);
-                _slots[i].name = $"Slot #{i}";
+                var slot = Instantiate(_slotPrefab, transform);
+                RegisterSlot(i, slot);
             }
 
             SyncItems();
+        }
+
+        private void RegisterSlot(int i, InventorySlot slot)
+        {
+            slot.Init(this, i);
+            slot.Hold += OnSlotHoldHandler;
+            _slots[i] = slot;
+        }
+        private void UnregisterSlot(InventorySlot slot)
+        {
+            Destroy(slot.gameObject);
+            slot.Hold -= OnSlotHoldHandler;
         }
 
         private void SyncItems()
@@ -94,7 +110,7 @@ namespace Farm.UI.InventoryUI
 
             foreach (InventorySlot slot in _slots)
             {
-                Destroy(slot.gameObject);
+                UnregisterSlot(slot);
             }
         }
     }

@@ -1,4 +1,6 @@
 ﻿using Farm.InventorySystem;
+using Farm.UI.Elements;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,12 +8,40 @@ namespace Farm.UI.InventoryUI
 {
     public class InventorySlot : MonoBehaviour
     {
-        [SerializeField] private Image _itemIcon;
-        [SerializeField] private Button _button;
+        public event Action<int> Hold;
 
-        internal void SetItem(ItemInfo info)
+        [SerializeField] private Image _itemIcon;
+        [SerializeField] private BasicButton _button;
+
+        private InventoryDisplay _inventory;
+
+        public int Index { get; private set; }
+
+        private void OnEnable()
+        {
+            _button.OnHold += OnHoldHandler;
+        }
+
+        private void OnDisable()
+        {
+            _button.OnHold -= OnHoldHandler;
+        }
+
+        public void Init(InventoryDisplay inventory, int idx)
+        {
+            _inventory = inventory;
+            Index = idx;
+            name = $"Slot #{Index}";
+        }
+
+        public void SetItem(ItemInfo info)
         {
             _itemIcon.sprite = info?.Icon;
+        }
+
+        private void OnHoldHandler()
+        {
+            Hold?.Invoke(Index);
         }
     }
 }

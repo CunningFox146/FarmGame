@@ -55,6 +55,7 @@ namespace Farm.InventorySystem
 
         private void RemoveItem(InventoryItem item, int slot)
         {
+            if (item is null) return;
             Items[slot] = null;
             item.OnDropped(this);
             ItemRemoved?.Invoke(item, slot);
