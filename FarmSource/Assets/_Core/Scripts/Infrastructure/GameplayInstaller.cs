@@ -1,4 +1,5 @@
 ﻿using Farm.InputActions;
+using Farm.Shadows;
 using UnityEngine;
 using Zenject;
 
@@ -10,8 +11,16 @@ namespace Farm.Infrastructure
 
         public override void InstallBindings()
         {
+            BindShadowSystem();
             BindInputActions();
             BindMainCamera();
+        }
+
+        private void BindShadowSystem()
+        {
+            Container.Bind<ShadowSystem>()
+                .FromComponentInHierarchy()
+                .AsSingle();
         }
 
         private void BindInputActions()
