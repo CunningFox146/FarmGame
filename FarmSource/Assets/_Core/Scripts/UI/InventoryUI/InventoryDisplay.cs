@@ -27,7 +27,7 @@ namespace Farm.UI.InventoryUI
         [Zenject.Inject]
         private void Constructor(Camera gameplayCamera, ViewSystem viewSystem)
         {
-            itemCollectVisualizer = new(this, gameplayCamera, viewSystem.ViewsCanvas.GetComponent<RectTransform>());
+            itemCollectVisualizer = new(gameplayCamera, viewSystem.ViewsCanvas.transform as RectTransform);
         }
 
         private void Awake()

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WorldSprite
+  m_Name: Cherry
   m_Shader: {fileID: -6465566751694194690, guid: 8fa2bb743a746344aa993c656c9d2f26,
     type: 3}
   m_ValidKeywords: []
@@ -128,8 +128,8 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WindIntensity: 0.5
-    - _WindSpeed: 1
+    - _WindIntensity: 0
+    - _WindSpeed: 0
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
