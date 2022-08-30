@@ -6,6 +6,7 @@ namespace Farm.InventorySystem
 {
     public class InventoryItem : MonoBehaviour, IInteractable
     {
+        [field: SerializeField] public ItemInfo Info { get; protected set; }
         [field: SerializeField] public bool IsInteractable { get; protected set; } = true;
 
         int IInteractable.Priority { get; set; } = 1;

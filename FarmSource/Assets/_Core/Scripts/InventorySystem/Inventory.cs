@@ -1,10 +1,15 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Farm.InventorySystem
 {
     public class Inventory : MonoBehaviour
     {
+        public event Action<InventoryItem, int> ItemAdded;
+        public event Action<InventoryItem, int> ItemRemoved;
+        public event Action<int> Resized;
+
         [SerializeField] private int _maxSize;
         public InventoryItem[] Items { get; private set; }
 
@@ -30,37 +35,44 @@ namespace Farm.InventorySystem
         {
             if (IsFull) return;
 
-            uint slot = GetFreeSlot();
+            int slot = GetFreeSlot();
             Items[slot] = item;
             item.OnPutInInventory(this);
+            ItemAdded?.Invoke(item, slot);
         }
 
-        public void Drop(int index)
+        public void Drop(int slot)
         {
-            var item = Items[index];
-            Items[index] = null;
-            item.OnDropped(this);
+            var item = Items[slot];
+            RemoveItem(item, slot);
         }
 
         public void Drop(InventoryItem item)
         {
-            uint slot = GetItemSlot(item);
-            Items[slot] = null;
-            item.OnDropped(this);
+            int slot = GetItemSlot(item);
+            RemoveItem(item, slot);
         }
 
-        private uint GetFreeSlot()
+        private void RemoveItem(InventoryItem item, int slot)
         {
-            for (uint i = 0; i < MaxSize; i++)
+            if (item is null) return;
+            Items[slot] = null;
+            item.OnDropped(this);
+            ItemRemoved?.Invoke(item, slot);
+        }
+
+        private int GetFreeSlot()
+        {
+            for (int i = 0; i < MaxSize; i++)
             {
                 if (Items[i] is null) return i;
             }
             return 0;
         }
 
-        private uint GetItemSlot(InventoryItem item)
+        private int GetItemSlot(InventoryItem item)
         {
-            for (uint i = 0; i < MaxSize; i++)
+            for (int i = 0; i < MaxSize; i++)
             {
                 if (Items[i] == item) return i;
             }
@@ -70,7 +82,7 @@ namespace Farm.InventorySystem
         private void Resize()
         {
             Items = new InventoryItem[MaxSize];
+            Resized?.Invoke(MaxSize);
         }
-
     }
 }
