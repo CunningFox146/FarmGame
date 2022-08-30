@@ -15,6 +15,7 @@ namespace Farm.UI.InventoryUI
 
         private InventoryDisplay _inventory;
 
+        public Image ItemIcon => _itemIcon;
         public int Index { get; private set; }
 
         private void OnEnable()
@@ -36,6 +37,7 @@ namespace Farm.UI.InventoryUI
 
         public void SetItem(ItemInfo info)
         {
+            _itemIcon.gameObject.SetActive(info is not null && info.Icon is not null);
             _itemIcon.sprite = info?.Icon;
         }
 

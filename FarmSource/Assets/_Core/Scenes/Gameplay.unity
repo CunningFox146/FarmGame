@@ -1525,6 +1525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d8a5fc8734948468e0d46e70d05605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _raycaster: {fileID: 1044323395}
+  <ViewsCanvas>k__BackingField: {fileID: 1044323397}
 --- !u!1 &1093054979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,7 +1717,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7798611, y: 1}
+    m_SensorSize: {x: 1.7780821, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

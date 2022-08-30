@@ -8,8 +8,10 @@ namespace Farm.UI.InventoryUI
         [SerializeField] private Inventory _inventory;
         [SerializeField] private InventorySlot _slotPrefab;
 
+
         private int _slotsCount;
         private InventorySlot[] _slots;
+        private ItemCollectVisualizer itemCollectVisualizer;
 
         public int SlotsCount
         {
@@ -20,6 +22,12 @@ namespace Farm.UI.InventoryUI
                 _slotsCount = value;
                 RebuildSlots();
             }
+        }
+
+        [Zenject.Inject]
+        private void Constructor(Camera gameplayCamera, ViewSystem viewSystem)
+        {
+            itemCollectVisualizer = new(this, gameplayCamera, viewSystem.ViewsCanvas.GetComponent<RectTransform>());
         }
 
         private void Awake()
@@ -57,6 +65,7 @@ namespace Farm.UI.InventoryUI
         private void OnItemAddedHandler(InventoryItem item, int slot)
         {
             _slots[slot].SetItem(item.Info);
+            itemCollectVisualizer.Visualize(item, _slots[slot]);
         }
 
         private void OnItemRemovedHandler(InventoryItem item, int slot)

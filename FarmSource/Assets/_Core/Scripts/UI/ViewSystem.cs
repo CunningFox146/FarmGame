@@ -12,16 +12,15 @@ namespace Farm.UI
     {
         public event Action<View> OnViewShown;
 
-        private Canvas ViewsCanvas;
-        private GraphicRaycaster _raycaster;
+        [SerializeField] private GraphicRaycaster _raycaster;
+
+        [field: SerializeField] public Canvas ViewsCanvas { get; private set; }
         public List<View> Views { get; private set; }
 
         public Camera UICamera => ViewsCanvas.worldCamera;
 
         private void Awake()
         {
-            _raycaster = GetComponent<GraphicRaycaster>();
-            ViewsCanvas = GetComponent<Canvas>();
             RegisterViews();
         }
 
