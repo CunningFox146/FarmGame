@@ -15,7 +15,7 @@ namespace Farm.Animations.FaceAppliers
 
         public void ApplyFace()
         {
-            //_spriteRenderer.flipX = Mathf.Abs(_transform.eulerAngles.y) > 180;
+            _spriteRenderer.flipX = Mathf.Abs(_transform.localEulerAngles.y) > 180;
         }
     }
 }

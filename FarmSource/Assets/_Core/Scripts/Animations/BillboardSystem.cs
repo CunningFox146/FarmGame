@@ -27,7 +27,9 @@ namespace Farm.Animations
         {
             foreach (Transform billboard in _billboards)
             {
-                billboard.LookAt(_camera);
+                var targetPostition = new Vector3(billboard.position.x, _camera.position.y, _camera.position.z);
+                billboard.LookAt(targetPostition);
+                billboard.Rotate(Vector3.up * -180f);
             }
         }
     }

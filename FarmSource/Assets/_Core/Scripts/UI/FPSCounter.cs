@@ -15,7 +15,7 @@ namespace Farm.UI
 
         private void Update()
         {
-            _text.text = (Time.frameCount / Time.time).ToString();
+            _text.text = $"{1.0f / Time.deltaTime} ({Time.frameCount / Time.time})";
         }
     }
 }
