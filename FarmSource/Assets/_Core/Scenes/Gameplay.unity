@@ -151,8 +151,8 @@ SpriteRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184960602}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -222,7 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35effb9c92bff6a48ac92964872ed0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Faces>k__BackingField: 0
 --- !u!95 &184960606
 Animator:
   serializedVersion: 4
@@ -353,45 +352,6 @@ SortingGroup:
   m_SortingLayerID: 1114890763
   m_SortingLayer: -1
   m_SortingOrder: -1
---- !u!1 &299889628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5708555145286831615, guid: ea2668ba8d97d3e42b7b0237befc86ab,
-    type: 3}
-  m_PrefabInstance: {fileID: 5708555145175676486}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &299889631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299889628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35effb9c92bff6a48ac92964872ed0b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Faces>k__BackingField: 0
---- !u!95 &299889632
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299889628}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &322758398
 GameObject:
   m_ObjectHideFlags: 0

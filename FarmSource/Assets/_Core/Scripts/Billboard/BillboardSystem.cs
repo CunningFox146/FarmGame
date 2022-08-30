@@ -2,9 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-// I wasn't able to make a billboard shader that would work with
-// multiple instances of the same material, so I'll use this system for now
-namespace Farm.Animations
+namespace Farm.Billboard
 {
     public class BillboardSystem : ITickable
     {
@@ -18,10 +16,9 @@ namespace Farm.Animations
             _camera = Camera.main.transform;
         }
 
-        public void RegisterBillboard(Transform billboard)
-        {
-            _billboards.Add(billboard);
-        }
+        public void RegisterBillboard(Transform billboard) => _billboards.Add(billboard);
+
+        public void UnregisterBillboard(Transform transform) => _billboards.Remove(transform);
 
         public void Tick()
         {
