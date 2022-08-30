@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Farm.Animations;
+using UnityEngine;
 using Zenject;
 
 namespace Farm.Infrastructure
@@ -8,6 +9,13 @@ namespace Farm.Infrastructure
         public override void InstallBindings()
         {
             Application.targetFrameRate = 300;
+            RegisterBillboardSystem();
+        }
+
+        private void RegisterBillboardSystem()
+        {
+            Container.BindInterfacesAndSelfTo<BillboardSystem>()
+                .AsSingle();
         }
     }
 }

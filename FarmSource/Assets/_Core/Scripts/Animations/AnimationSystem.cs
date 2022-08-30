@@ -17,6 +17,12 @@ namespace Farm.Animations
             private set => _spriteRenderer.material = value;
         }
 
+        [Zenject.Inject]
+        private void Container(BillboardSystem billboardSystem)
+        {
+            billboardSystem.RegisterBillboard(transform);
+        }
+
         protected virtual void Awake()
         {
             _animator = GetComponent<Animator>();

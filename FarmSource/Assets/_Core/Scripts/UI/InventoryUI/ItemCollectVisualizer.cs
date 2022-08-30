@@ -12,13 +12,11 @@ namespace Farm.UI.InventoryUI
         private ObjectPool<Image> _icons;
         private Camera _gameplayCamera;
         private RectTransform _canvas;
-        private InventoryDisplay _inventory;
 
-        public ItemCollectVisualizer(InventoryDisplay inventory, Camera gameplayCamera, RectTransform canvas)
+        public ItemCollectVisualizer(Camera gameplayCamera, RectTransform canvas)
         {
             _gameplayCamera = gameplayCamera;
             _canvas = canvas;
-            _inventory = inventory;
 
             InitPool();
         }

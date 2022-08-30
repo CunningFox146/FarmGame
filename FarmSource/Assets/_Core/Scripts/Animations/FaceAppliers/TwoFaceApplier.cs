@@ -10,12 +10,12 @@ namespace Farm.Animations.FaceAppliers
         public TwoFaceApplier(SpriteRenderer spriteRenderer)
         {
             _spriteRenderer = spriteRenderer;
-            _transform = spriteRenderer.transform;
+            _transform = spriteRenderer.transform.parent;
         }
 
         public void ApplyFace()
         {
-            _spriteRenderer.flipX = Mathf.Abs(_transform.eulerAngles.y) > 180;
+            _spriteRenderer.flipX = Mathf.Abs(_transform.localEulerAngles.y) > 180;
         }
     }
 }
