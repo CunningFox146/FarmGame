@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7184859140831580468}
   - component: {fileID: 7184859140831580475}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 7184859141062807833}
   - component: {fileID: 7184859141062807839}
   - component: {fileID: 1720583521283048907}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64147f0e57c4960439b638f872da57ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _raycastDistance: 50
+  _raycastDistance: 1000
 --- !u!114 &7184859141062807833
 MonoBehaviour:
   m_ObjectHideFlags: 0

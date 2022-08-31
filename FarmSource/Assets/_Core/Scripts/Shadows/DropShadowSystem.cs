@@ -34,7 +34,9 @@ namespace Farm.Shadows
             {
                 var target = pair.Key;
                 var shadow = pair.Value;
-                shadow.position = target.position;
+                var targetPos = target.position;
+                targetPos.y = 0f;
+                shadow.position = targetPos;
             }
         }
 

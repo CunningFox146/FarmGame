@@ -74,10 +74,9 @@ namespace Farm.Interactable
             return interactions;
         }
 
-        // We asume that collider is always the child of the target
         private IEnumerable<IInteractable> GetInteractables(Transform target)
         {
-            return target.parent.GetComponents<IInteractable>();
+            return target.GetComponents<IInteractable>();
         }
     }
 }
