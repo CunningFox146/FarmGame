@@ -1,4 +1,4 @@
-﻿namespace Farm.Animations.FaceAppliers
+﻿namespace Farm.Billboard.FaceAppliers
 {
     public interface IFaceApplier
     {

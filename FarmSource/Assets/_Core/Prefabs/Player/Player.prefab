@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 890685627d811314db6f74127d3275f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Faces>k__BackingField: 0
+  <Faces>k__BackingField: 1
 --- !u!95 &7184859140338449962
 Animator:
   serializedVersion: 4

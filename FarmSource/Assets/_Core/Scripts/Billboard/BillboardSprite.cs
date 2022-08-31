@@ -1,5 +1,5 @@
 ﻿using Farm.Animations;
-using Farm.Animations.FaceAppliers;
+using Farm.Billboard.FaceAppliers;
 using UnityEngine;
 
 namespace Farm.Billboard

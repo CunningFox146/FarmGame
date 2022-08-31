@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Farm.Animations.FaceAppliers
+namespace Farm.Billboard.FaceAppliers
 {
     public class TwoFaceApplier : IFaceApplier
     {
