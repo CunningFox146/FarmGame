@@ -18,7 +18,7 @@ namespace Farm.Infrastructure
 
         private void BindShadowSystem()
         {
-            Container.Bind<ShadowSystem>()
+            Container.Bind<DropShadowSystem>()
                 .FromComponentInHierarchy()
                 .AsSingle();
         }
