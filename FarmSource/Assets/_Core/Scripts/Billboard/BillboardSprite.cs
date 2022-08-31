@@ -1,5 +1,4 @@
-﻿using Farm.Animations;
-using Farm.Billboard.FaceAppliers;
+﻿using Farm.Billboard.FaceAppliers;
 using UnityEngine;
 
 namespace Farm.Billboard
@@ -11,7 +10,7 @@ namespace Farm.Billboard
         private IFaceApplier _faceApplier;
         private BillboardSystem _billboardSystem;
 
-        [field: SerializeField] public AnimationFaces Faces { get; private set; }
+        [field: SerializeField] public BillboardFaces Faces { get; private set; }
 
         public Material SpriteMaterial
         {
@@ -52,7 +51,7 @@ namespace Farm.Billboard
         {
             switch (Faces)
             {
-                case AnimationFaces.TwoFaced:
+                case BillboardFaces.TwoFaced:
                     _faceApplier = new TwoFaceApplier(_spriteRenderer);
                     break;
                 default:
