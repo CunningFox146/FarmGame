@@ -2,7 +2,6 @@
 using Farm.Systems;
 using System.Collections.Generic;
 using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Farm.Interactable
@@ -74,10 +73,9 @@ namespace Farm.Interactable
             return interactions;
         }
 
-        // We asume that collider is always the child of the target
         private IEnumerable<IInteractable> GetInteractables(Transform target)
         {
-            return target.parent.GetComponents<IInteractable>();
+            return target.root.GetComponentsInChildren<IInteractable>();
         }
     }
 }

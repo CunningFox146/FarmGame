@@ -7,6 +7,8 @@
         IgnoreRaycast = 2,
         Water = 4,
         UI = 5,
-        Interactable = 6
+        Interactable = 6,
+        Player = 7,
+        InventoryItem = 8,
     }
 }
