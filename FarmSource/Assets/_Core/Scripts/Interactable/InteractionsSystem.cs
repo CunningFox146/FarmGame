@@ -2,7 +2,6 @@
 using Farm.Systems;
 using System.Collections.Generic;
 using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Farm.Interactable
@@ -76,7 +75,7 @@ namespace Farm.Interactable
 
         private IEnumerable<IInteractable> GetInteractables(Transform target)
         {
-            return target.GetComponents<IInteractable>();
+            return target.root.GetComponentsInChildren<IInteractable>();
         }
     }
 }

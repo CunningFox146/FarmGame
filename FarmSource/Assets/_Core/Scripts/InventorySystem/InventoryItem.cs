@@ -1,4 +1,5 @@
 ﻿using Farm.Interactable;
+using Farm.Util;
 using System;
 using UnityEngine;
 
@@ -29,7 +30,12 @@ namespace Farm.InventorySystem
             gameObject.SetActive(true);
             transform.SetParent(null);
 
-            // TODO: Do drop physics?
+            if (TryGetComponent(out Rigidbody rigidbody))
+            {
+                var direction = Vector3.right * 2f * RandomUtil.RandomSign();
+                direction.y = 2f;
+                rigidbody.AddForce(direction, ForceMode.Impulse);
+            }
         }
 
         public bool IsValid(GameObject doer)
