@@ -24,6 +24,11 @@ namespace Farm.Billboard
             _billboardSystem = billboardSystem;
         }
 
+        private void Reset()
+        {
+            SetupSpriteRenderer();
+        }
+
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -46,6 +51,16 @@ namespace Farm.Billboard
         {
             _faceApplier?.ApplyFace();
         }
+
+        private void SetupSpriteRenderer()
+        {
+            if (_spriteRenderer is null)
+            {
+                _spriteRenderer = GetComponent<SpriteRenderer>();
+            }
+            _spriteRenderer.spriteSortPoint = SpriteSortPoint.Pivot;
+        }
+
 
         private void InitFaceApplier()
         {
