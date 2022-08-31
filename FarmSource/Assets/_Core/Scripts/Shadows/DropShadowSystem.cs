@@ -4,7 +4,7 @@ using UnityEngine.Pool;
 
 namespace Farm.Shadows
 {
-    public class ShadowSystem : MonoBehaviour
+    public class DropShadowSystem : MonoBehaviour
     {
         [SerializeField] private GameObject _shadowPrefab;
         [SerializeField] private int _poolSize;
@@ -17,7 +17,7 @@ namespace Farm.Shadows
             _pool = new(
                 () => {
                     var shadow = Instantiate(_shadowPrefab, transform);
-                    shadow.GetComponent<ShadowFollower>().Init(this);
+                    shadow.GetComponent<DropShadow>().Init(this);
                     return shadow.transform;
                 },
                 (shadow) => shadow.gameObject.SetActive(true),
