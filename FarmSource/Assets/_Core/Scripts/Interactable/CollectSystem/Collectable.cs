@@ -15,6 +15,12 @@ namespace Farm.Interactable.CollectSystem
 
         private void Awake()
         {
+            InitSource();
+        }
+
+        private void InitSource()
+        {
+            _source = Instantiate(_source);
             _source?.Init(this);
         }
     }

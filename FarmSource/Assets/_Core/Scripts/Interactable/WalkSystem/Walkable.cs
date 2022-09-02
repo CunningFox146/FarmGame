@@ -7,5 +7,15 @@ namespace Farm.Interactable.WalkSystem
         [SerializeField] public WalkSource _source;
 
         public InteractionSource GetSource() => _source;
+
+        private void Awake()
+        {
+            InitSource();
+        }
+
+        private void InitSource()
+        {
+            _source = Instantiate(_source);
+        }
     }
 }

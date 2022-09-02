@@ -20,6 +20,12 @@ namespace Farm.InventorySystem
 
         private void Awake()
         {
+            InitSource();
+        }
+
+        private void InitSource()
+        {
+            _source = Instantiate(_source);
             _source?.Init(this);
         }
 
