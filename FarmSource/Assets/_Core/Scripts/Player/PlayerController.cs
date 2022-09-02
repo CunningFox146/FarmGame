@@ -50,7 +50,7 @@ namespace Farm.Player
             var ray = _mainCamera.ScreenPointToRay(pos);
             if (Physics.Raycast(ray, out RaycastHit hit, _raycastDistance, 1 << (int)Layers.Interactable))
             {
-                var info = new InteractionInfo()
+                var info = new InteractionData()
                 {
                     Point = new Vector3(hit.point.x, 0f, hit.point.z),
                 };

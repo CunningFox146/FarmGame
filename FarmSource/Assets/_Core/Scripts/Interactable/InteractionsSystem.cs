@@ -10,7 +10,7 @@ namespace Farm.Interactable
     public class InteractionsSystem : MonoBehaviour
     {
         private Movement _movement;
-        private IInteractable _target;
+        private InteractionSource _target;
         private CancellationTokenSource _targetCt;
 
         private void Awake()
@@ -24,7 +24,7 @@ namespace Farm.Interactable
             _targetCt = null;
         }
 
-        public void Interact(Transform target, InteractionInfo info)
+        public void Interact(Transform target, InteractionData info)
         {
             var interactions = CollectInteractions(target);
             if (interactions.Count == 0) return;
@@ -39,11 +39,11 @@ namespace Farm.Interactable
             }
         }
 
-        private async void StartInteraction(InteractionInfo info, IInteractable interaction, CancellationToken cancellationToken)
+        private async void StartInteraction(InteractionData info, InteractionSource interaction, CancellationToken cancellationToken)
         {
             _target = interaction;
 
-            _movement.SetDestination(info.Point, interaction.Distance);
+            _movement.SetDestination(info.Point, _target.Distance);
 
             var ct = this.GetCancellationTokenOnDestroy();
             while (_movement.IsMoving)
@@ -58,14 +58,15 @@ namespace Farm.Interactable
             }
         }
 
-        private List<IInteractable> CollectInteractions(Transform target)
+        private List<InteractionSource> CollectInteractions(Transform target)
         {
-            var interactions = new List<IInteractable>();
+            var interactions = new List<InteractionSource>();
 
             foreach (IInteractable interactable in GetInteractables(target))
             {
-                if (!interactable.IsValid(gameObject)) continue;
-                interactions.Add(interactable);
+                var source = interactable.GetSource();
+                if (!source.IsValid(gameObject)) continue;
+                interactions.Add(source);
             }
 
             interactions.Sort((a, b) => a.Priority.CompareTo(b.Priority));

@@ -1,19 +1,11 @@
-﻿using Farm.Systems;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Farm.Interactable.WalkSystem
 {
     public class Walkable : MonoBehaviour, IInteractable
     {
-        int IInteractable.Priority { get; set; }
-        float IInteractable.Distance { get; set; } = 0.1f;
+        [SerializeField] public WalkSource _source;
 
-        // InteractionSystem automatically walks to interaction point, so we don't need to do anything here
-        public bool Interact(GameObject doer, InteractionInfo info) => true;
-
-        public bool IsValid(GameObject doer)
-        {
-            return doer.GetComponent<Movement>() is not null;
-        }
+        public InteractionSource GetSource() => _source;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Farm.Interactable
 {
-    public struct InteractionInfo
+    public struct InteractionData
     {
         public Vector3 Point { get; set; }
     }

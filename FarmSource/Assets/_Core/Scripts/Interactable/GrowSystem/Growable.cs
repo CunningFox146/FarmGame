@@ -44,7 +44,7 @@ namespace Farm.Interactable.GrowSystem
             Progress += Time.deltaTime * GrowthSpeedMultiplier;
             if (Progress >= StageGrowthTime)
             {
-                CurrentStage = Mathf.Clamp(CurrentStage, 0, StagesCount)
+                CurrentStage = Mathf.Clamp(CurrentStage, 0, StagesCount);
             }
         }
     }
