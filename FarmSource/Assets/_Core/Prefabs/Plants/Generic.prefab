@@ -148,7 +148,8 @@ MonoBehaviour:
   <InteractionSettings>k__BackingField: {fileID: 11400000, guid: 88fa794dea40feb4d9679b6813a837fc,
     type: 2}
   <WorkTime>k__BackingField: 1
-  <ProductPrefab>k__BackingField: {fileID: 0}
+  <ProductPrefab>k__BackingField: {fileID: 5708555145219682312, guid: ea2668ba8d97d3e42b7b0237befc86ab,
+    type: 3}
   <IsCollectable>k__BackingField: 0
 --- !u!114 &6853955019416412441
 MonoBehaviour:
@@ -162,8 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dacf0eefecab904d8b3d7c435504bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StagesCount>k__BackingField: 4
-  <StageGrowthTime>k__BackingField: 2
+  <StagesCount>k__BackingField: 3
+  <StageGrowthTime>k__BackingField: 1
   <IsGrowing>k__BackingField: 1
   _spriteRenderer: {fileID: 9078415346939839758}
   _sprites:

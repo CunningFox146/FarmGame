@@ -3259,16 +3259,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6853955019416412441, guid: 2db2bed7120b63b4fb3771dd711bee3b,
-        type: 3}
-      propertyPath: <StagesCount>k__BackingField
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6853955019416412441, guid: 2db2bed7120b63b4fb3771dd711bee3b,
-        type: 3}
-      propertyPath: <StageGrowthTime>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7243960383437209874, guid: 2db2bed7120b63b4fb3771dd711bee3b,
         type: 3}
       propertyPath: m_RootOrder
