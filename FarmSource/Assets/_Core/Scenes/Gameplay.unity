@@ -517,7 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d497406d941f243b4889a6e73cbb41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _info: {fileID: 11400000, guid: 610143f8c0e4211469a91aab5bccde83, type: 2}
+  <InteractionSettings>k__BackingField: {fileID: 11400000, guid: e53effb316f2f5c499f5abf87f99e6fb,
+    type: 2}
 --- !u!210 &197578792
 SortingGroup:
   m_ObjectHideFlags: 0

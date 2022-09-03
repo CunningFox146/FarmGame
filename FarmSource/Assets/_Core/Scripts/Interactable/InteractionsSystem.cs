@@ -10,7 +10,7 @@ namespace Farm.Interactable
     public class InteractionsSystem : MonoBehaviour
     {
         private Movement _movement;
-        private InteractionSource _target;
+        private IInteractionLogic _target;
         private CancellationTokenSource _targetCt;
 
         private void Awake()
@@ -39,7 +39,7 @@ namespace Farm.Interactable
             }
         }
 
-        private async void StartInteraction(InteractionData info, InteractionSource interaction, CancellationToken cancellationToken)
+        private async void StartInteraction(InteractionData info, IInteractionLogic interaction, CancellationToken cancellationToken)
         {
             _target = interaction;
 
@@ -58,9 +58,9 @@ namespace Farm.Interactable
             }
         }
 
-        private List<InteractionSource> CollectInteractions(Transform target)
+        private List<IInteractionLogic> CollectInteractions(Transform target)
         {
-            var interactions = new List<InteractionSource>();
+            var interactions = new List<IInteractionLogic>();
 
             foreach (IInteractable interactable in GetInteractables(target))
             {

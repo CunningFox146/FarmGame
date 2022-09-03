@@ -2,10 +2,10 @@
 
 namespace Farm.Interactable
 {
-    public abstract class InteractionSource
+    public interface IInteractionLogic
     {
-        public int Priority { get; protected set; }
-        public float Distance { get; protected set; } = 1f;
+        public int Priority { get; }
+        public float Distance { get; }
 
         public abstract bool IsValid(GameObject doer);
         public abstract bool Interact(GameObject doer, InteractionData info);

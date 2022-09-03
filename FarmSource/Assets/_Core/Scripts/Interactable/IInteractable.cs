@@ -2,6 +2,7 @@
 {
     public interface IInteractable
     {
-        public InteractionSource InteractionSource { get; }
+        public IInteractionLogic InteractionSource { get; }
+        public InteractionSettings InteractionSettings { get; }
     }
 }

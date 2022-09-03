@@ -10,13 +10,13 @@ namespace Farm.InventorySystem
         public event Action<Inventory> PutInInventory;
         public event Action<Inventory> Dropped;
 
-        [SerializeField] private InteractableInfo _info;
         private Source _source;
 
+        [field: SerializeField] public InteractionSettings InteractionSettings { get; private set; }
         [field: SerializeField] public ItemInfo Info { get; protected set; }
         [field: SerializeField] public bool IsInteractable { get; protected set; } = true;
 
-        public InteractionSource InteractionSource => _source;
+        public IInteractionLogic InteractionSource => _source;
 
         private void Awake()
         {
@@ -25,7 +25,7 @@ namespace Farm.InventorySystem
 
         private void InitSource()
         {
-            _source = new(this, _info);
+            _source = new(this, InteractionSettings);
         }
 
         public void OnPutInInventory(Inventory inventory)
@@ -50,9 +50,9 @@ namespace Farm.InventorySystem
             }
         }
 
-        public class Source : InteractionSourceComponent<InventoryItem>
+        public class Source : InteractionLogicComponent<InventoryItem>
         {
-            public Source(InventoryItem target, InteractableInfo info) : base(target, info) { }
+            public Source(InventoryItem target, InteractionSettings settings) : base(target, settings) { }
 
             public override bool IsValid(GameObject doer)
             {

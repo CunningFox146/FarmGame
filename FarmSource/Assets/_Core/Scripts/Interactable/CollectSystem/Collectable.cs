@@ -6,23 +6,23 @@ namespace Farm.Interactable.CollectSystem
 {
     public class Collectable : MonoBehaviour, IInteractable
     {
-        [SerializeField] private InteractableInfo _info;
         private Source _source;
 
+        [field: SerializeField] public InteractionSettings InteractionSettings { get; private set; }
         [field: SerializeField] public float WorkTime { get; private set; }
         [field: SerializeField] public InventoryItem ProductPrefab { get; private set; }
         [field: SerializeField] public bool IsCollectable { get; private set; }
 
-        public InteractionSource InteractionSource => _source;
+        public IInteractionLogic InteractionSource => _source;
 
         private void Awake()
         {
-            _source = new(this, _info);
+            _source = new(this, InteractionSettings);
         }
 
-        public class Source : InteractionSourceComponent<Collectable>
+        public class Source : InteractionLogicComponent<Collectable>
         {
-            public Source(Collectable target, InteractableInfo info) : base(target, info) { }
+            public Source(Collectable target, InteractionSettings settings) : base(target, settings) { }
 
             public override bool Interact(GameObject doer, InteractionData info)
             {
