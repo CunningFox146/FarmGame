@@ -1,8 +1,7 @@
-﻿using Farm.InventorySystem;
-using Farm.Systems;
+﻿using Farm.Interactable;
 using UnityEngine;
 
-namespace Farm.Interactable.WalkSystem
+namespace Farm.WalkSystem
 {
     public class Walkable : MonoBehaviour, IInteractable
     {

@@ -1,11 +1,15 @@
 ﻿using Farm.InventorySystem;
 using Farm.Player;
+using System;
 using UnityEngine;
 
 namespace Farm.Interactable.CollectSystem
 {
     public class Collectable : MonoBehaviour, IInteractable
     {
+        public event Action Regrown; 
+        public event Action Picked; 
+
         private Source _source;
 
         [field: SerializeField] public InteractionSettings InteractionSettings { get; private set; }
@@ -18,6 +22,18 @@ namespace Farm.Interactable.CollectSystem
         private void Awake()
         {
             _source = new(this, InteractionSettings);
+        }
+
+        public void Regrow()
+        {
+            IsCollectable = true;
+            Regrown?.Invoke();
+        }
+
+        public void OnPicked()
+        {
+            IsCollectable = false;
+            Picked?.Invoke();
         }
 
         public class Source : InteractionLogicComponent<Collectable>
@@ -37,6 +53,7 @@ namespace Farm.Interactable.CollectSystem
                     var inventory = doer.GetComponent<Inventory>();
                     var product = Instantiate(Target.ProductPrefab);
                     inventory.Put(product);
+                    Target.OnPicked();
 
                     stateSystem.StartIdle();
                 };

@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7206b23c2aa50ab42ba2277e414ac14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 200
+  <Speed>k__BackingField: 4
 --- !u!114 &7184859141062807835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64147f0e57c4960439b638f872da57ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _raycastDistance: 1000
+  _raycastDistance: 100
 --- !u!114 &7184859141062807833
 MonoBehaviour:
   m_ObjectHideFlags: 0

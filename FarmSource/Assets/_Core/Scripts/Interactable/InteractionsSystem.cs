@@ -1,5 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
-using Farm.Systems;
+using Farm.WalkSystem;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;

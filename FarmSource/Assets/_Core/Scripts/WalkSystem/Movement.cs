@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Farm.Systems
+namespace Farm.WalkSystem
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Movement : MonoBehaviour
@@ -41,7 +41,7 @@ namespace Farm.Systems
                 var lookAtTarget = _destination;
                 lookAtTarget.y = 0;
                 transform.LookAt(lookAtTarget);
-                _rigidbody.velocity = ((_destination - transform.position).normalized * Time.fixedDeltaTime * Speed);
+                _rigidbody.velocity = (_destination - transform.position).normalized * Speed;
             }
             else if (wasMoving)
             {
