@@ -1,21 +1,31 @@
-﻿using UnityEngine;
+﻿using Farm.Systems;
+using UnityEngine;
 
 namespace Farm.Interactable.WalkSystem
 {
     public class Walkable : MonoBehaviour, IInteractable
     {
-        [SerializeField] public WalkSource _source;
+        [SerializeField] public InteractableInfo _info;
+        private Source _source;
 
-        public InteractionSource GetSource() => _source;
+        public InteractionSource InteractionSource => _source;
 
         private void Awake()
         {
-            InitSource();
+            _source = new(this, _info);
         }
 
-        private void InitSource()
+        public class Source : InteractionSourceComponent<Walkable>
         {
-            _source = Instantiate(_source);
+            public Source(Walkable target, InteractableInfo info) : base(target, info) { }
+
+            // InteractionSystem automatically walks to interaction point, so we don't need to do anything here
+            public override bool Interact(GameObject doer, InteractionData info) => true;
+
+            public override bool IsValid(GameObject doer)
+            {
+                return doer.GetComponent<Movement>() is not null;
+            }
         }
     }
 }

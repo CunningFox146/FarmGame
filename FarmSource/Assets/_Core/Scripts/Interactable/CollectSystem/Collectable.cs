@@ -1,27 +1,53 @@
 ﻿using Farm.InventorySystem;
+using Farm.Player;
 using UnityEngine;
 
 namespace Farm.Interactable.CollectSystem
 {
     public class Collectable : MonoBehaviour, IInteractable
     {
-        [SerializeField] CollectableSource _source;
+        [SerializeField] private InteractableInfo _info;
+        private Source _source;
 
         [field: SerializeField] public float WorkTime { get; private set; }
         [field: SerializeField] public InventoryItem ProductPrefab { get; private set; }
         [field: SerializeField] public bool IsCollectable { get; private set; }
 
-        public InteractionSource GetSource() => _source;
+        public InteractionSource InteractionSource => _source;
 
         private void Awake()
         {
-            InitSource();
+            _source = new(this, _info);
         }
 
-        private void InitSource()
+        public class Source : InteractionSourceComponent<Collectable>
         {
-            _source = Instantiate(_source);
-            _source?.Init(this);
+            public Source(Collectable target, InteractableInfo info) : base(target, info) { }
+
+            public override bool Interact(GameObject doer, InteractionData info)
+            {
+                var stateSystem = doer.GetComponent<PlayerStates>();
+
+                stateSystem.StartWorking();
+
+                var state = stateSystem.CurrentState;
+                state.TimeoutTime = Target.WorkTime;
+                state.OnTimeout = () =>
+                {
+                    var inventory = doer.GetComponent<Inventory>();
+                    var product = Instantiate(Target.ProductPrefab);
+                    inventory.Put(product);
+
+                    stateSystem.StartIdle();
+                };
+
+                return true;
+            }
+
+            public override bool IsValid(GameObject doer)
+            {
+                return doer.GetComponent<Inventory>() && Target.IsCollectable;
+            }
         }
     }
 }

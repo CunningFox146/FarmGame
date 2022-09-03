@@ -64,7 +64,7 @@ namespace Farm.Interactable
 
             foreach (IInteractable interactable in GetInteractables(target))
             {
-                var source = interactable.GetSource();
+                var source = interactable.InteractionSource;
                 if (!source.IsValid(gameObject)) continue;
                 interactions.Add(source);
             }
