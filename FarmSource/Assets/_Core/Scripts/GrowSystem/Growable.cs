@@ -11,7 +11,8 @@ namespace Farm.Interactable.GrowSystem
         protected SourceModifierList _growthSpeedMult = new();
         protected int _currentStage = 0;
 
-        [field: SerializeField] public int StagesCount { get; protected set; }
+        [field: SerializeField, Tooltip("First stage is 0")]
+        public int StagesCount { get; protected set; }
         [field: SerializeField] public float StageGrowthTime { get; protected set; }
         [field: SerializeField] public bool IsGrowing { get; protected set; }
 
@@ -29,11 +30,13 @@ namespace Farm.Interactable.GrowSystem
         }
 
         public float Progress { get; protected set; }
+
         public float GrowthSpeedMultiplier => _growthSpeedMult.Modifier;
+        public bool IsFull => StagesCount == CurrentStage;
 
         protected virtual void Update()
         {
-            if (IsGrowing && CurrentStage == StagesCount)
+            if (IsGrowing && CurrentStage < StagesCount)
             {
                 UpdateStage();
             }
@@ -44,7 +47,8 @@ namespace Farm.Interactable.GrowSystem
             Progress += Time.deltaTime * GrowthSpeedMultiplier;
             if (Progress >= StageGrowthTime)
             {
-                CurrentStage = Mathf.Clamp(CurrentStage, 0, StagesCount);
+                CurrentStage = Mathf.Clamp(CurrentStage + 1, 0, StagesCount);
+                Progress = 0f;
             }
         }
     }
