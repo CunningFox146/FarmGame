@@ -1,6 +1,6 @@
 ﻿using Farm.Animations;
 using Farm.States;
-using Farm.Systems;
+using Farm.WalkSystem;
 using UnityEngine;
 
 namespace Farm.Player
