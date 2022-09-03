@@ -21,6 +21,7 @@ namespace Farm.Billboard
         {
             var job = new BillboardJob()
             {
+                ClampRotation = new(50f, 0f, 0f),
                 CameraPos = _camera.position
             };
 
