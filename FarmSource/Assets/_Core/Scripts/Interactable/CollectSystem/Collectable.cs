@@ -6,36 +6,48 @@ namespace Farm.Interactable.CollectSystem
 {
     public class Collectable : MonoBehaviour, IInteractable
     {
-        [SerializeField] private float _workTime;
-        [SerializeField] private InventoryItem _productPrefab;
+        private Source _source;
+
+        [field: SerializeField] public InteractionSettings InteractionSettings { get; private set; }
+        [field: SerializeField] public float WorkTime { get; private set; }
+        [field: SerializeField] public InventoryItem ProductPrefab { get; private set; }
         [field: SerializeField] public bool IsCollectable { get; private set; }
 
-        int IInteractable.Priority { get; set; } = 1;
-        float IInteractable.Distance { get; set; } = 2f;
+        public IInteractionLogic InteractionSource => _source;
 
-        public bool Interact(GameObject doer, InteractionInfo info)
+        private void Awake()
         {
-            var stateSystem = doer.GetComponent<PlayerStates>();
-
-            stateSystem.StartWorking();
-
-            var state = stateSystem.CurrentState;
-            state.TimeoutTime = _workTime;
-            state.OnTimeout = () =>
-            {
-                var inventory = doer.GetComponent<Inventory>();
-                var product = Instantiate(_productPrefab);
-                inventory.Put(product);
-
-                stateSystem.StartIdle();
-            };
-
-            return true;
+            _source = new(this, InteractionSettings);
         }
 
-        public bool IsValid(GameObject doer)
+        public class Source : InteractionLogicComponent<Collectable>
         {
-            return doer.GetComponent<Inventory>() && IsCollectable;
+            public Source(Collectable target, InteractionSettings settings) : base(target, settings) { }
+
+            public override bool Interact(GameObject doer, InteractionData info)
+            {
+                var stateSystem = doer.GetComponent<PlayerStates>();
+
+                stateSystem.StartWorking();
+
+                var state = stateSystem.CurrentState;
+                state.TimeoutTime = Target.WorkTime;
+                state.OnTimeout = () =>
+                {
+                    var inventory = doer.GetComponent<Inventory>();
+                    var product = Instantiate(Target.ProductPrefab);
+                    inventory.Put(product);
+
+                    stateSystem.StartIdle();
+                };
+
+                return true;
+            }
+
+            public override bool IsValid(GameObject doer)
+            {
+                return doer.GetComponent<Inventory>() && Target.IsCollectable;
+            }
         }
     }
 }

@@ -7,14 +7,26 @@ namespace Farm.InventorySystem
 {
     public class InventoryItem : MonoBehaviour, IInteractable
     {
+        public event Action<Inventory> PutInInventory;
+        public event Action<Inventory> Dropped;
+
+        private Source _source;
+
+        [field: SerializeField] public InteractionSettings InteractionSettings { get; private set; }
         [field: SerializeField] public ItemInfo Info { get; protected set; }
         [field: SerializeField] public bool IsInteractable { get; protected set; } = true;
 
-        int IInteractable.Priority { get; set; } = 1;
-        float IInteractable.Distance { get; set; } = 2f;
+        public IInteractionLogic InteractionSource => _source;
 
-        public event Action<Inventory> PutInInventory;
-        public event Action<Inventory> Dropped;
+        private void Awake()
+        {
+            InitSource();
+        }
+
+        private void InitSource()
+        {
+            _source = new(this, InteractionSettings);
+        }
 
         public void OnPutInInventory(Inventory inventory)
         {
@@ -38,16 +50,21 @@ namespace Farm.InventorySystem
             }
         }
 
-        public bool IsValid(GameObject doer)
+        public class Source : InteractionLogicComponent<InventoryItem>
         {
-            return doer.GetComponent<Inventory>() is not null && IsInteractable;
-        }
+            public Source(InventoryItem target, InteractionSettings settings) : base(target, settings) { }
 
-        public bool Interact(GameObject doer, InteractionInfo info)
-        {
-            var inventory = doer.GetComponent<Inventory>();
-            inventory.Put(this);
-            return true;
+            public override bool IsValid(GameObject doer)
+            {
+                return doer.GetComponent<Inventory>() is not null && Target.IsInteractable;
+            }
+
+            public override bool Interact(GameObject doer, InteractionData info)
+            {
+                var inventory = doer.GetComponent<Inventory>();
+                inventory.Put(Target);
+                return true;
+            }
         }
     }
 }

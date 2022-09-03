@@ -1,8 +1,7 @@
 ﻿using Farm.Animations;
-using Farm.Interactable.GrowSystem;
 using UnityEngine;
 
-namespace Farm.Interactable.Plants
+namespace Farm.Interactable.GrowSystem
 {
     public class Plant : Growable
     {
@@ -20,7 +19,7 @@ namespace Farm.Interactable.Plants
 
         private void OnStageChangedHandler(int stage)
         {
-            
+
         }
     }
 }

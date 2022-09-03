@@ -94,6 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932924794757be04cb918ea924b1aa55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <InteractionSettings>k__BackingField: {fileID: 11400000, guid: 88fa794dea40feb4d9679b6813a837fc,
+    type: 2}
   <Info>k__BackingField: {fileID: 11400000, guid: 3ff2e901dc666aa4eaddb57cefeb5e41,
     type: 2}
   <IsInteractable>k__BackingField: 1
