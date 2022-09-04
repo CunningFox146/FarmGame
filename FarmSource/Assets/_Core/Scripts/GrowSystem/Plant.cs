@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Farm.Interactable.GrowSystem
+namespace Farm.GrowSystem
 {
     [RequireComponent(typeof(Collectable))]
     public class Plant : Growable
@@ -14,6 +14,8 @@ namespace Farm.Interactable.GrowSystem
         private void Awake()
         {
             _collectable = GetComponent<Collectable>();
+
+            UpdateStage(CurrentStage);
         }
 
         private void OnEnable()
@@ -34,6 +36,11 @@ namespace Farm.Interactable.GrowSystem
         }
 
         private void OnStageChangedHandler(int stage)
+        {
+            UpdateStage(stage);
+        }
+
+        private void UpdateStage(int stage)
         {
             _spriteRenderer.sprite = _sprites[stage];
             if (IsFull)

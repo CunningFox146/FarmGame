@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5708555145219682315}
   - component: {fileID: 5708555145219682312}
+  - component: {fileID: -2154896905255204501}
   m_Layer: 0
   m_Name: TestPickable
   m_TagString: Untagged
@@ -51,6 +52,18 @@ MonoBehaviour:
   <Info>k__BackingField: {fileID: 11400000, guid: 3ff2e901dc666aa4eaddb57cefeb5e41,
     type: 2}
   <IsInteractable>k__BackingField: 1
+--- !u!114 &-2154896905255204501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5708555145219682314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5766ae1bcdd2a46bf284f84da4abbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5708555145286831615
 GameObject:
   m_ObjectHideFlags: 0

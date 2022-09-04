@@ -1,8 +1,6 @@
-﻿using Farm.Interactable.GrowSystem;
-using Farm.InventorySystem;
+﻿using Farm.GrowSystem;
 using UnityEditor;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace Farm.EditorTools
 {
