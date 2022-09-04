@@ -1,33 +1,50 @@
-﻿using Farm.InventorySystem;
+﻿using Farm.Factories;
+using Farm.Interactable;
+using Farm.InventorySystem;
 using Farm.Player;
 using System;
 using UnityEngine;
 
-namespace Farm.Interactable.CollectSystem
+namespace Farm.CollectSystem
 {
     public class Collectable : MonoBehaviour, IInteractable
     {
-        public event Action Regrown; 
-        public event Action Picked; 
+        public event Action Regrown;
+        public event Action Picked;
 
         private Source _source;
 
         [field: SerializeField] public InteractionSettings InteractionSettings { get; private set; }
         [field: SerializeField] public float WorkTime { get; private set; }
-        [field: SerializeField] public InventoryItem ProductPrefab { get; private set; }
         [field: SerializeField] public bool IsCollectable { get; private set; }
+        public IInventoryItemFactory ProductFactory { get; set; }
+        public InventoryItem Product { get; private set; }
 
         public IInteractionLogic InteractionSource => _source;
+
 
         private void Awake()
         {
             _source = new(this, InteractionSettings);
+
+            if (IsCollectable)
+            {
+                CreateProduct();
+            }
+        }
+
+        private void CreateProduct()
+        {
+            Product = ProductFactory.CreateInventoryItem();
+            Product.transform.SetParent(transform);
+            Product.gameObject.SetActive(false);
         }
 
         public void Regrow()
         {
             IsCollectable = true;
             Regrown?.Invoke();
+            CreateProduct();
         }
 
         public void OnPicked()
@@ -51,8 +68,7 @@ namespace Farm.Interactable.CollectSystem
                 state.OnTimeout = () =>
                 {
                     var inventory = doer.GetComponent<Inventory>();
-                    var product = Instantiate(Target.ProductPrefab);
-                    inventory.Put(product);
+                    inventory.Put(Target.Product);
                     Target.OnPicked();
 
                     stateSystem.StartIdle();

@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace Farm.Interactable.GrowSystem
+namespace Farm.GrowSystem
 {
     public class Growable : MonoBehaviour
     {
