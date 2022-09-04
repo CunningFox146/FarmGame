@@ -1,20 +1,17 @@
-﻿using Farm.Interactable.CollectSystem;
+﻿using Farm.CollectSystem;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Farm.GrowSystem
 {
-    [RequireComponent(typeof(Collectable))]
     public class Plant : Growable
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] protected Collectable _collectable;
         [SerializeField] private List<Sprite> _sprites;
-        private Collectable _collectable;
 
         private void Awake()
         {
-            _collectable = GetComponent<Collectable>();
-
             UpdateStage(CurrentStage);
         }
 

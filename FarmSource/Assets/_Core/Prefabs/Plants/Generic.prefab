@@ -108,7 +108,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7243960383437209874}
   - component: {fileID: 781199982367970058}
-  - component: {fileID: 6853955019416412441}
   m_Layer: 0
   m_Name: Generic
   m_TagString: Untagged
@@ -148,26 +147,7 @@ MonoBehaviour:
   <InteractionSettings>k__BackingField: {fileID: 11400000, guid: 88fa794dea40feb4d9679b6813a837fc,
     type: 2}
   <WorkTime>k__BackingField: 1
-  <ProductPrefab>k__BackingField: {fileID: 5708555145219682312, guid: ea2668ba8d97d3e42b7b0237befc86ab,
-    type: 3}
   <IsCollectable>k__BackingField: 0
---- !u!114 &6853955019416412441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8377278782487390629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dacf0eefecab904d8b3d7c435504bf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <StagesCount>k__BackingField: 0
-  <StageGrowthTime>k__BackingField: 0
-  <IsGrowing>k__BackingField: 1
-  _spriteRenderer: {fileID: 9078415346939839758}
-  _sprites: []
 --- !u!1001 &8636953254255800164
 PrefabInstance:
   m_ObjectHideFlags: 0

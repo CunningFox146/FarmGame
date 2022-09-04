@@ -1,33 +1,27 @@
 ﻿using Farm.Factories;
-using Farm.GrowSystem;
+using Farm.Interactable;
 using Farm.InventorySystem;
 using Farm.Player;
 using System;
 using UnityEngine;
 
-namespace Farm.Interactable.CollectSystem
+namespace Farm.CollectSystem
 {
     public class Collectable : MonoBehaviour, IInteractable
     {
-        public event Action Regrown; 
-        public event Action Picked; 
+        public event Action Regrown;
+        public event Action Picked;
 
         private Source _source;
-        private TestPickable.Factory _factory;
 
         [field: SerializeField] public InteractionSettings InteractionSettings { get; private set; }
         [field: SerializeField] public float WorkTime { get; private set; }
-        [field: SerializeField] public InventoryItem ProductPrefab { get; private set; }
         [field: SerializeField] public bool IsCollectable { get; private set; }
+        public IInventoryItemFactory ProductFactory { get; set; }
         public InventoryItem Product { get; private set; }
 
         public IInteractionLogic InteractionSource => _source;
 
-        [Zenject.Inject]
-        private void Constructor(TestPickable.Factory factory)
-        {
-            _factory = factory;
-        }
 
         private void Awake()
         {
@@ -41,7 +35,7 @@ namespace Farm.Interactable.CollectSystem
 
         private void CreateProduct()
         {
-            Product = _factory.Create().GetComponent<InventoryItem>();
+            Product = ProductFactory.CreateInventoryItem();
             Product.transform.SetParent(transform);
             Product.gameObject.SetActive(false);
         }

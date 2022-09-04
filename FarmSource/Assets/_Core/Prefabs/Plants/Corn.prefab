@@ -117,7 +117,8 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6853955019416412441, guid: 2db2bed7120b63b4fb3771dd711bee3b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2db2bed7120b63b4fb3771dd711bee3b, type: 3}
 --- !u!1 &1579776065114244933 stripped
 GameObject:
@@ -137,8 +138,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f68e4cd8d7a7cc41b6870e0962d0d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StagesCount>k__BackingField: 0
-  <StageGrowthTime>k__BackingField: 0
-  <IsGrowing>k__BackingField: 0
-  _spriteRenderer: {fileID: 0}
-  _sprites: []
+  <StagesCount>k__BackingField: 3
+  <StageGrowthTime>k__BackingField: 1
+  <IsGrowing>k__BackingField: 1
+  _spriteRenderer: {fileID: 2041095952924847086}
+  _collectable: {fileID: 7744236849799560682}
+  _sprites:
+  - {fileID: 21300000, guid: c18605cb0dd96c24e81ee6959cdcfa28, type: 3}
+  - {fileID: 21300000, guid: b70c6769a704ba945926121259cf1971, type: 3}
+  - {fileID: 21300000, guid: 4f37b1902ec1cc5419c40d6fce432b94, type: 3}
+  - {fileID: 21300000, guid: ad652babdea98d147ae659ea15ba212f, type: 3}
+--- !u!212 &2041095952924847086 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9078415346939839758, guid: 2db2bed7120b63b4fb3771dd711bee3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7038685712570347232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7744236849799560682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 781199982367970058, guid: 2db2bed7120b63b4fb3771dd711bee3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7038685712570347232}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579776065114244933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc94c18ba137224ca04116053f4a06f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
