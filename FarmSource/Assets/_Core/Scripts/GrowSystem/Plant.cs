@@ -37,7 +37,7 @@ namespace Farm.GrowSystem
             UpdateStage(stage);
         }
 
-        private void UpdateStage(int stage)
+        protected virtual void UpdateStage(int stage)
         {
             _spriteRenderer.sprite = _sprites[stage];
             if (IsFull)
