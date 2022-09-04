@@ -12,7 +12,7 @@ namespace Farm.Infrastructure
 
         public override void InstallBindings()
         {
-            Container.BindFactory<Corn, Corn.Factory>().FromComponentInNewPrefab(_corn).AsSingle();
+            //Container.BindFactory<Corn, Corn.Factory>().FromComponentInNewPrefab(_corn).AsSingle();
             Container.BindFactory<TestPickable, TestPickable.Factory>().FromComponentInNewPrefab(_testPickable).AsSingle();
         }
     }
