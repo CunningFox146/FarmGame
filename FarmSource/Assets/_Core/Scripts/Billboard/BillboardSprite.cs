@@ -3,19 +3,18 @@ using UnityEngine;
 
 namespace Farm.Billboard
 {
-    [RequireComponent(typeof(SpriteRenderer))]
     public class BillboardSprite : MonoBehaviour
     {
-        private SpriteRenderer _spriteRenderer;
         private IFaceApplier _faceApplier;
         private BillboardSystem _billboardSystem;
 
         [field: SerializeField] public BillboardFaces Faces { get; private set; }
+        [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
 
         public Material SpriteMaterial
         {
-            get => _spriteRenderer.material;
-            private set => _spriteRenderer.material = value;
+            get => SpriteRenderer.material;
+            private set => SpriteRenderer.material = value;
         }
 
         [Zenject.Inject]
@@ -24,16 +23,9 @@ namespace Farm.Billboard
             _billboardSystem = billboardSystem;
         }
 
-        private void Reset()
-        {
-            SetupSpriteRenderer();
-        }
-
         private void Awake()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-
-            SpriteMaterial = new Material(_spriteRenderer.material);
+            SpriteMaterial = new Material(SpriteRenderer.material);
             InitFaceApplier();
         }
 
@@ -52,22 +44,12 @@ namespace Farm.Billboard
             _faceApplier?.ApplyFace();
         }
 
-        private void SetupSpriteRenderer()
-        {
-            if (_spriteRenderer is null)
-            {
-                _spriteRenderer = GetComponent<SpriteRenderer>();
-            }
-            _spriteRenderer.spriteSortPoint = SpriteSortPoint.Pivot;
-        }
-
-
         private void InitFaceApplier()
         {
             switch (Faces)
             {
                 case BillboardFaces.TwoFaced:
-                    _faceApplier = new TwoFaceApplier(_spriteRenderer);
+                    _faceApplier = new TwoFaceApplier(SpriteRenderer);
                     break;
                 default:
                     _faceApplier = null;

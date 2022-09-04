@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cherry
+  m_Name: InvenntoryItem
   m_Shader: {fileID: -6465566751694194690, guid: 8fa2bb743a746344aa993c656c9d2f26,
     type: 3}
   m_ValidKeywords: []
