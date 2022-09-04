@@ -8,11 +8,13 @@ namespace Farm.InventorySystem
     {
         public event Action<InventoryItem, int> ItemAdded;
         public event Action<InventoryItem, int> ItemRemoved;
+        public event Action<InventoryItem, int> ActiveItemChanged;
         public event Action<int> Resized;
 
         [SerializeField] private int _maxSize;
-        public InventoryItem[] Items { get; private set; }
 
+        public InventoryItem[] Items { get; private set; }
+        public InventoryItem ActiveItem { get; private set; }
         public int Size => Items.Count(e => e is not null);
         public int MaxSize
         {
@@ -51,6 +53,36 @@ namespace Farm.InventorySystem
         {
             int slot = GetItemSlot(item);
             RemoveItem(item, slot);
+        }
+
+        public void SetActiveItem(InventoryItem item)
+        {
+            int slot = GetItemSlot(item);
+            ActivateItem(item, slot);
+        }
+
+        public void SetActiveItem(int slot)
+        {
+            var item = Items[slot];
+            ActivateItem(item, slot);
+        }
+
+        private void ActivateItem(InventoryItem item, int slot)
+        {
+            if (item is null)
+            {
+                ClearActiveItem();
+                return;
+            }
+
+            ActiveItem = item;
+            ActiveItemChanged?.Invoke(item, slot);
+        }
+
+        public void ClearActiveItem()
+        {
+            ActiveItem = null;
+            ActiveItemChanged?.Invoke(null, -1);
         }
 
         private void RemoveItem(InventoryItem item, int slot)

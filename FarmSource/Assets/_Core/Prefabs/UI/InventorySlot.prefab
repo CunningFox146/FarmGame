@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: 2859701573348331930}
+  _bg: {fileID: 2859701571717228219}
   _button: {fileID: 3530293337323237108}
 --- !u!1 &2859701573348331924
 GameObject:

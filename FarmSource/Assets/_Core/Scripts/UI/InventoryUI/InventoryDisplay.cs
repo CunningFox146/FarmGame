@@ -1,4 +1,5 @@
 ﻿using Farm.InventorySystem;
+using System;
 using UnityEngine;
 
 namespace Farm.UI.InventoryUI
@@ -8,8 +9,8 @@ namespace Farm.UI.InventoryUI
         [SerializeField] private Inventory _inventory;
         [SerializeField] private InventorySlot _slotPrefab;
 
-
         private int _slotsCount;
+        private int _activeItemSlot;
         private InventorySlot[] _slots;
         private ItemCollectVisualizer itemCollectVisualizer;
 
@@ -38,6 +39,7 @@ namespace Farm.UI.InventoryUI
         private void OnEnable()
         {
             RegisterEventHandlers();
+            SyncItems();
         }
 
         private void OnDisable()
@@ -54,28 +56,32 @@ namespace Farm.UI.InventoryUI
         {
             _inventory.ItemAdded += OnItemAddedHandler;
             _inventory.ItemRemoved += OnItemRemovedHandler;
+            _inventory.ActiveItemChanged += OnActiveItemChangedHandler;
         }
 
         private void UnregisterEventHandlers()
         {
             _inventory.ItemAdded -= OnItemAddedHandler;
             _inventory.ItemRemoved -= OnItemRemovedHandler;
+            _inventory.ActiveItemChanged -= OnActiveItemChangedHandler;
         }
 
-        private void OnItemAddedHandler(InventoryItem item, int slot)
+        public void SetActiveItem(int slot)
         {
-            _slots[slot].SetItem(item.Info);
-            itemCollectVisualizer.Visualize(item, _slots[slot]);
+            _inventory.SetActiveItem(slot);
+            for (int i = 0; i < SlotsCount; i++)
+            {
+                _slots[i].IsActiveItem = i == slot;
+            }
         }
 
-        private void OnItemRemovedHandler(InventoryItem item, int slot)
+        public void ClearActiveItem()
         {
-            _slots[slot].SetItem(null);
-        }
-
-        private void OnSlotHoldHandler(int idx)
-        {
-            _inventory.Drop(idx);
+            _inventory.ClearActiveItem();
+            for (int i = 0; i < SlotsCount; i++)
+            {
+                _slots[i].IsActiveItem = false;
+            }
         }
 
         private void RebuildSlots()
@@ -96,20 +102,25 @@ namespace Farm.UI.InventoryUI
         {
             slot.Init(this, i);
             slot.Hold += OnSlotHoldHandler;
+            slot.Click += OnSlotClickHandler;
             _slots[i] = slot;
         }
+
         private void UnregisterSlot(InventorySlot slot)
         {
             Destroy(slot.gameObject);
             slot.Hold -= OnSlotHoldHandler;
+            slot.Click -= OnSlotClickHandler;
         }
 
         private void SyncItems()
         {
+            var activeItem = _inventory.ActiveItem;
             for (int i = 0; i < _slotsCount; i++)
             {
                 var item = _inventory.Items?[i];
                 _slots[i].SetItem(item?.Info);
+                _slots[i].IsActiveItem = activeItem is not null && activeItem == item;
             }
         }
 
@@ -120,6 +131,44 @@ namespace Farm.UI.InventoryUI
             foreach (InventorySlot slot in _slots)
             {
                 UnregisterSlot(slot);
+            }
+        }
+
+        private void OnItemAddedHandler(InventoryItem item, int slot)
+        {
+            _slots[slot].SetItem(item.Info);
+            itemCollectVisualizer.Visualize(item, _slots[slot]);
+        }
+
+        private void OnItemRemovedHandler(InventoryItem item, int slot)
+        {
+            _slots[slot].SetItem(null);
+        }
+
+        private void OnActiveItemChangedHandler(InventoryItem item, int slot)
+        {
+            _activeItemSlot = slot;
+            for (int i = 0; i < _slotsCount; i++)
+            {
+                _slots[i].IsActiveItem = i == slot;
+            }
+        }
+
+        private void OnSlotHoldHandler(int slot)
+        {
+            _inventory.Drop(slot);
+        }
+
+        private void OnSlotClickHandler(int slot)
+        {
+            if (_activeItemSlot == slot)
+            {
+                _inventory.ClearActiveItem();
+            }
+            else
+            {
+                _activeItemSlot = slot;
+                _inventory.SetActiveItem(slot);
             }
         }
     }
