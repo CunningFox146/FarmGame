@@ -30,15 +30,6 @@ namespace Farm.InputActions
             ""id"": ""893e26c0-e969-4b51-b5f0-e61990987f1e"",
             ""actions"": [
                 {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""94ed0c83-aafe-4d21-99b3-43ccf967ea44"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Position"",
                     ""type"": ""Value"",
                     ""id"": ""7710de51-1aa7-42eb-af7e-d1d17226970f"",
@@ -46,13 +37,22 @@ namespace Farm.InputActions
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""94ed0c83-aafe-4d21-99b3-43ccf967ea44"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""e1e6386b-31c6-4d16-b9c6-511e2ed2e0e3"",
-                    ""path"": ""<Pointer>/press"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -62,8 +62,30 @@ namespace Farm.InputActions
                 },
                 {
                     ""name"": """",
-                    ""id"": ""89d3256f-fd59-4de9-85fd-548edff03038"",
-                    ""path"": ""<Pointer>/position"",
+                    ""id"": ""fc9c688e-54bd-4269-bf28-79497c357c7a"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37a5d856-6887-4072-93be-50451e2a12be"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dcb7f5c6-bb72-4d5b-a84c-40d8ad7a68a8"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -78,8 +100,8 @@ namespace Farm.InputActions
 }");
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_Position = m_Player.FindAction("Position", throwIfNotFound: true);
+            m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -139,14 +161,14 @@ namespace Farm.InputActions
         // Player
         private readonly InputActionMap m_Player;
         private IPlayerActions m_PlayerActionsCallbackInterface;
-        private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_Position;
+        private readonly InputAction m_Player_Interact;
         public struct PlayerActions
         {
             private @PlayerInputActions m_Wrapper;
             public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @Position => m_Wrapper.m_Player_Position;
+            public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -156,30 +178,30 @@ namespace Farm.InputActions
             {
                 if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
                 {
-                    @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                    @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                    @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                     @Position.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPosition;
                     @Position.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPosition;
                     @Position.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPosition;
+                    @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                    @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                    @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
                 {
-                    @Interact.started += instance.OnInteract;
-                    @Interact.performed += instance.OnInteract;
-                    @Interact.canceled += instance.OnInteract;
                     @Position.started += instance.OnPosition;
                     @Position.performed += instance.OnPosition;
                     @Position.canceled += instance.OnPosition;
+                    @Interact.started += instance.OnInteract;
+                    @Interact.performed += instance.OnInteract;
+                    @Interact.canceled += instance.OnInteract;
                 }
             }
         }
         public PlayerActions @Player => new PlayerActions(this);
         public interface IPlayerActions
         {
-            void OnInteract(InputAction.CallbackContext context);
             void OnPosition(InputAction.CallbackContext context);
+            void OnInteract(InputAction.CallbackContext context);
         }
     }
 }

@@ -6,15 +6,6 @@
             "id": "7b1e13cd-8c31-4851-b04e-5c47bb7397f1",
             "actions": [
                 {
-                    "name": "ButtonHold",
-                    "type": "Button",
-                    "id": "f75be003-4ddb-423b-bb35-a0f11144bc55",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Position",
                     "type": "Value",
                     "id": "6c266b21-76b5-4cbb-b16a-81ea4a9df6bf",
@@ -31,24 +22,22 @@
                     "processors": "",
                     "interactions": "MultiTap",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ButtonHold",
+                    "type": "Button",
+                    "id": "f75be003-4ddb-423b-bb35-a0f11144bc55",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "314e09c5-ab7d-4266-b41a-352694c6bb72",
-                    "path": "<Pointer>/press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ButtonHold",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8b31a727-47ec-4e97-8efa-022f2d98dc8a",
-                    "path": "<Pointer>/position",
+                    "id": "425dd4e7-4913-477a-a60d-9ef5da65934a",
+                    "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -58,8 +47,52 @@
                 },
                 {
                     "name": "",
-                    "id": "b9822e15-7bf1-4751-a362-a2844f527185",
-                    "path": "<Pointer>/press",
+                    "id": "c0dad6f2-3b17-483d-9d3b-d6e90af90e76",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "61e5c544-a7ee-46bf-92b9-4ee4ecda3fa2",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e200515f-603e-4ea4-8451-84fd25e20a5a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5ec7e3f-1f8f-44e4-9156-ba99da4c791a",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DoubleTap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26c236c1-8719-4106-a807-d3173bc72f56",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
