@@ -1,8 +1,9 @@
 ﻿using Farm.CollectSystem;
+using Farm.GrowSystem;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Farm.GrowSystem
+namespace Farm.Plants
 {
     public class Plant : Growable
     {
