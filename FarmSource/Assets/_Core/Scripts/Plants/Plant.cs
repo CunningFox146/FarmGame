@@ -1,5 +1,6 @@
 ﻿using Farm.CollectSystem;
 using Farm.GrowSystem;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace Farm.Plants
 {
     public class Plant : Growable
     {
+        public event Action StageUpdate;
+
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] protected Collectable _collectable;
         [SerializeField] private List<Sprite> _sprites;
@@ -45,6 +48,7 @@ namespace Farm.Plants
             {
                 _collectable.Regrow();
             }
+            StageUpdate?.Invoke();
         }
     }
 }
