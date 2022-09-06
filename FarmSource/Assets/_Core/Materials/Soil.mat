@@ -55,6 +55,6 @@ Material:
     - _Edge: 0.925
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Tilling: 1
+    - _Tilling: 0.5
     m_Colors: []
   m_BuildTextureStacks: []
