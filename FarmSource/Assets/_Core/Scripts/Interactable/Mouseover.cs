@@ -1,5 +1,4 @@
-﻿using Farm.Billboard;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Farm.Interactable
 {

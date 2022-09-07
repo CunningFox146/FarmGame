@@ -77,7 +77,7 @@ namespace Farm.CollectSystem
                 return true;
             }
 
-            public override bool IsValid(GameObject doer)
+            public override bool IsValid(GameObject doer, InteractionData info)
             {
                 return doer.GetComponent<Inventory>() && Target.IsCollectable;
             }

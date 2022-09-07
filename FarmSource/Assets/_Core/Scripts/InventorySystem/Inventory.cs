@@ -35,7 +35,11 @@ namespace Farm.InventorySystem
 
         public void Put(InventoryItem item)
         {
-            if (IsFull) return;
+            if (IsFull)
+            {
+                item.OnDropped(this);
+                return;
+            }
 
             int slot = GetFreeSlot();
             Items[slot] = item;

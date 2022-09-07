@@ -23,7 +23,7 @@ namespace Farm.WalkSystem
             // InteractionSystem automatically walks to interaction point, so we don't need to do anything here
             public override bool Interact(GameObject doer, InteractionData info) => true;
 
-            public override bool IsValid(GameObject doer)
+            public override bool IsValid(GameObject doer, InteractionData info)
             {
                 return doer.GetComponent<Movement>() is not null;
             }

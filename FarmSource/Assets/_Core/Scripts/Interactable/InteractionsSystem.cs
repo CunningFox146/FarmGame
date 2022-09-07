@@ -26,7 +26,7 @@ namespace Farm.Interactable
 
         public void Interact(Transform target, InteractionData info)
         {
-            var interactions = CollectInteractions(target);
+            var interactions = CollectInteractions(target, info);
             if (interactions.Count == 0) return;
 
             var interaction = interactions[0];
@@ -58,14 +58,14 @@ namespace Farm.Interactable
             }
         }
 
-        private List<IInteractionLogic> CollectInteractions(Transform target)
+        private List<IInteractionLogic> CollectInteractions(Transform target, InteractionData info)
         {
             var interactions = new List<IInteractionLogic>();
 
             foreach (IInteractable interactable in GetInteractables(target))
             {
                 var source = interactable.InteractionSource;
-                if (!source.IsValid(gameObject)) continue;
+                if (!source.IsValid(gameObject, info)) continue;
                 interactions.Add(source);
             }
 

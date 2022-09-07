@@ -41,6 +41,7 @@ namespace Farm.InventorySystem
             Dropped?.Invoke(inventory);
             gameObject.SetActive(true);
             transform.SetParent(null);
+            transform.position = inventory.transform.position;
 
             if (TryGetComponent(out Rigidbody rigidbody))
             {
@@ -54,7 +55,7 @@ namespace Farm.InventorySystem
         {
             public Source(InventoryItem target, InteractionSettings settings) : base(target, settings) { }
 
-            public override bool IsValid(GameObject doer)
+            public override bool IsValid(GameObject doer, InteractionData info)
             {
                 return doer.GetComponent<Inventory>() is not null && Target.IsInteractable;
             }

@@ -1,5 +1,6 @@
 ﻿using Farm.InputActions;
 using Farm.Interactable;
+using Farm.InventorySystem;
 using Farm.UI;
 using Farm.Util;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace Farm.Player
         private InteractionsSystem _interactionsSystem;
         private Camera _mainCamera;
         private ViewSystem _viewSystem;
+        private Inventory _inventory;
 
         [Zenject.Inject]
         private void Constructor(Camera camera, ViewSystem viewSystem, PlayerInputActions inputActions)
@@ -29,6 +31,7 @@ namespace Farm.Player
         private void Awake()
         {
             _interactionsSystem = GetComponent<InteractionsSystem>();
+            _inventory = GetComponent<Inventory>();
         }
 
         private void OnEnable()
@@ -53,6 +56,7 @@ namespace Farm.Player
                 var info = new InteractionData()
                 {
                     Point = new Vector3(hit.point.x, 0f, hit.point.z),
+                    ActiveItem = _inventory.ActiveItem
                 };
                 _interactionsSystem.Interact(hit.transform, info);
             }

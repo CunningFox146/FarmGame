@@ -18,7 +18,7 @@ namespace Farm.Interactable
             Distance = Settings.Distance;
         }
 
-        public abstract bool IsValid(GameObject doer);
+        public abstract bool IsValid(GameObject doer, InteractionData info);
 
         public abstract bool Interact(GameObject doer, InteractionData info);
     }
